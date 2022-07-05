@@ -12,7 +12,7 @@
 // console.log(f(2, 5));
 // document.write(f(2, 5));
 
-// ------
+// ----------------------
 // 변수 or 함수 선언은 앞에 위치시켜야 한다.
 // function add(x, y) {
 //     return x + y;

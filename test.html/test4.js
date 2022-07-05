@@ -97,13 +97,10 @@
 
 // ------------------소수를 함수로 변경----------------
 function input_data(){
-var num1, num2;
-num1 = parseInt(prompt("첫번째 수를 입력하세요."));
-num2 = parseInt(prompt("두번째 수를 입력하세요."));
+var num1 = parseInt(prompt("첫번째 수를 입력하세요."));
+var num2 = parseInt(prompt("두번째 수를 입력하세요."));
 return {num_1:num1, num_2:num2};
 }
-
-var min_num, max_num, count=0;
 
 var num = input_data()
 var num1 = num.num_1;
@@ -111,33 +108,60 @@ var num2 = num.num_2;
 
 
 function minmax_proc(num1, num2){            //var minmax_proc = (num1, num2) => { };
-if(num1 > num2){
-    var max_num = num1;
-    var min_num = num2;
-}else{
-    var max_num = num2;
-    var min_num = num1;
-} return{min_num:min_num, max_num:max_num};
+    if(num1 > num2){
+        var max = num1;
+        var min = num2;
+    }else{
+        var max = num2;
+        var min = num1;
+    } return{min_num:min, max_num:max};
 }
 
-function prime_number(min_num, max_num){    //var prime_number(min_num, max_num) => { };
+var min_max = minmax_proc(num1, num2);
+var min = min_max.min_num;
+var max = min_max.max_num; 
+
+function prime_number(min, max){    //var prime_number(min_num, max_num) => { };
     var count = 0;
-for(var i=min_num; i <= max_num; i++){
-    for(var j = 2; j <= i; j++){
-        if(i%j==0) {
-            break;
+    for(var i=min; i <= max; i++){
+        for(var j = 2; j <= i; j++){
+            if(i%j==0) {
+                break;
+            }
+        }
+        if(i == j){
+            count++;     
+            console.log(i);
         }
     }
-    if(i == j){
-        count++;     
-        console.log(i);
-    }
-}return count;
+    return count;
 }
-function total_count(cnt){         //var total_count => cnt { };
-console.log(`소수의 총 개수는 ${cnt} `);
-}
-var num = input_data(num.num_1, num.num_2);
-var min_max = prime_number(min_max.min_num, min_max.max.num);
-total_count(cnt);
 
+var cnt = prime_number(min, max);
+
+function total_count(){
+    return console.log(`소수의 총 개수는 ${cnt} `);
+}
+total_count();
+
+
+
+
+
+
+function changeVal (primitive, obj) {
+    primitive += 100;
+    obj.name = 'Lee';
+}
+
+var num = 500;
+// var person = {name: 'Han'};
+var person = { who: 'Han' };
+
+console.log(num); // 결과 : 500
+console.log(person); // 결과 : {who: 'Han'}
+
+changeVal (num, person);
+
+console.log(num); // 결과 : 500, 원시 값의 원본 : 훼손 X
+console.log(person); // 결과 : {name: 'Lee'}, 객체 값의 원본 : 훼손 O
