@@ -107,7 +107,7 @@ var num1 = num.num_1;
 var num2 = num.num_2;
 
 
-function minmax_proc(num1, num2){            //var minmax_proc = (num1, num2) => { };
+function minmax_proc(num1, num2){         //var minmax_proc = (num1, num2) => { };
     if(num1 > num2){
         var max = num1;
         var min = num2;

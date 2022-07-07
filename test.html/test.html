@@ -5,10 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="주민번호 프로그램작성.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            var text = $('h1').text();   //text안에 파라미터값이 없으면 읽어내기, 없으면 설정하기
+            var html = $('h1').html();
+
+            alert("text: " + text);  //모든 글자들만 나타내기  
+            alert("html: " + html);  //해당 글자와 <br>까지 나타냄
+        });
+        
+        
+        // $(document).ready(function () {
+        //     $('h1:nth-child(1)').text('<a href="#">text()</a>');  
+        //     $('h1:nth-child(2)').html('<a href="#">html()</a>');
+        // });
+        
+        
+        // $(document).ready(function() {
+        //     var output = '';
+        //     for (var i = 0; i <100; i++){
+        //         output += '<div></div>';
+        //     }
+        //     document.body.innerHTML = output;
+        //     $('div').css({
+        //         height:function (a) {
+        //             return a;
+        //         },
+        //         backgroundColor : function(a, ){
+        //             return 'rgb(' + a +',' + a+','+ a +')';
+        //         }
+        //     });
+        // });
+
+
+        // $(document).ready  (function() {
+        //     $('.box').css('float', 'left');
+        //     $('.box').css('margin', 10);
+        //     $('.box').css('width', 100);
+        //     $('.box').css('height', 100);
+        //     $('.box').css('backgroundColor', 'red');  //set
+        //     // $('.box').css('backgroundColor');   /get
+        // });
+    </script>
 </head>
 <body>
-    kizxc
+    <!-- <div class = "box"></div>
+    <div class = "box"></div>
+    <div class = "box"></div> -->
+    <h1>Header - 0</h1>
+    <h1>Header - 1</h1> 
     
 </body>
 </html>

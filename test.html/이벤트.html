@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lnline Event</title>
+    <script>
+     window.onload = function() {
+        var button = document.getElementById('button');
+        button.onclick =function() {
+         return false;    //event.preventDefault(); 와 같은 기능
+        };
+    };
+        // button.addEventListener('click', function() {     //이벤트를 추가할 때 사용 addeventlistener
+        //     alert('click');                               //이벤트를 제거할 때 사용 removeeventslistener
+        // }
+        // )};
+    </script>
+
+</head>
+<body>
+    <a id="button" href="http://hanbit.co.kr">버튼</a>
+</body>
+</html>

@@ -50,8 +50,10 @@
 // console.log( Date());
 // console.log(new Date(Date.now()));
 
-const str = '123456-1234567'
-for(let i = 0; i <str.length; i++){
-    console.log(str.charAt(i)); 
-}
- console.log(str.substring(2, 4));
+// const str = '123456-1234567'
+// for(let i = 0; i <str.length; i++){
+//     console.log(str.charAt(i)); 
+// }
+//  console.log(str.substring(2, 4));
+
+
