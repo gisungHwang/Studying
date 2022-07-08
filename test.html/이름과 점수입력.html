@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnAdd").click(function (){
+                var row = `<tr align = 'center'>
+                <td>${$('#irum').val()}</td>
+                <td>${$('#score').val()}</td>
+                <td><input type ="button" class="btnDel" value="Del"</td>
+                </tr>`;
+        
+            $("#list").append(row);
+            $("#irum").val('');
+            $("#score").val('');
+        });
+        $("#list").on("click", ".btnDel", function() {
+            $(this).parent().parent().remove();       
+        });
+    });
+    </script>
+</head>
+<body>
+    <table  border="2" align="center">
+        <tr>
+            <td><input type="text" id ="irum" placeholder = "이름입력"></td>
+            <td><input type="text" id="score" placeholder = "점수입력"></td>
+            <td><input type="button" id="btnAdd" value="추가" ></td>
+        </tr>
+    </table>
+    <br>
+    <table id = "list" border="1" align="center" >
+        <tr>
+            <th width="70x">이름</th>
+            <th width="70x">점수</th>
+            <th width="50x">&nbsp;</th>
+        </tr>
+    </table>
+</body>
+</html>
