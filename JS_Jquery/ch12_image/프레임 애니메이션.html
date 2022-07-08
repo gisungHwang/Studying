@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var res, count, image, frames;
+        window.onload = function () { 
+                count = 0;
+                image = document.getElementById('image');
+                frames = [
+                '0.png', '1.png', '2.png', '3.png', '5.png', '6.png', '7.png', '8.png',
+                '10.png', '11.png', '12.png', '13.png', '14.png'
+            ]; 
+        };
+        function start() {
+            res = setInterval(function () {
+            image.src = frames[count % frames.length];
+            count = count + 1;
+            }, 1000 / 20);
+        };
+
+                function stop() {
+                res = setInterval(function () {
+                image.src = frames[count % frames.length];
+                count = count + 1;
+                }, 1000 / 20);
+        };
+    </script>
+</head>
+<body>
+    <image id = "image"></image>
+    <input type = "button" value="시작" onclick="start()">
+    <input type = "button" value="정지" onclick="stop()">
+
+</body>
+</html>
