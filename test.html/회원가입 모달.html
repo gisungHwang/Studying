@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>회원가입 모달양식</title>
+    <style>
+        /* The Modal 스타일 시작 --------------------------------> */
+        /* The Modal (background) */
+        /* #close {
+            margin-bottom: 100px;
+            padding-bottom: ;
+        } */
+
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+        
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            /* 10% from the top and centered */
+            padding: 40px;
+            padding-right: 20px;
+            border: 10px solid #585858;
+            width: 500px;
+            height: 410px;
+            /* Could be more or less, depending on screen size */
+        }
+    
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            margin-bottom: auto;
+        }
+    
+        /* The Modal 스타일 끝 <---------------------------------- */
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        
+        window.onload = function () {
+            var modal = document.getElementById('myModal');
+            var btn = document.getElementById("myBtn");
+            var span = document.getElementsByClassName("close")[0];
+
+            btn.onclick = function (event) {
+                modal.style.display = "block";
+            }
+
+            span.onclick = function (event) {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+//-----------------전화번호 자동포커스 설정-------------------------------
+            var input_1 = document.getElementById('tel_1');
+            var input_2 = document.getElementById('tel_2');
+            var input_3 = document.getElementById('tel_3');
+            input_1.onkeydown = function () {
+                if (3 == input_1.value.length) {
+                    input_2.focus();
+                } 
+                if(event.keyCode == 8 && 3 <= input_1.value.length){
+                    input_1.focus();
+                }
+            }
+
+
+            input_2.onkeydown = function () {
+                var event = event || window.event;
+                if (event.keyCode == 8 && input_2.value.length == 0) {
+                    input_1.focus();
+                } else if (event.keyCode == 8 && 4 <= input_2.value.length) {
+                    // input_2.focus();
+                } else if (input_2.value.length >= 4) {
+                    input_3.focus();
+                }
+            }
+
+            input_3.onkeydown = function () {
+                var event = event || window.event;
+                if (event.keyCode == 8 && input_3.value.length == 0) {
+                    input_2.focus();
+                } else if (event.keyCode == 8 && 4 <= input_2.value.length) {
+                    // input_2.focus();
+                } else if (input_3.value.length >= 4) {
+                    input_2.focus();
+                }
+                if (event.keyCode == 8 && 4 <= input_3.value.length) {
+                    input_3.focus();
+                }
+            }
+            //-------------주민등록번호 자동포커스설정----------------------------
+            var input_5 = document.getElementById('jumin1');
+            var input_6 = document.getElementById('jumin2');
+            input_5.onkeydown = function () {
+                if (6 <= input_5.value.length) {
+                    input_6.focus();
+                }
+                if (event.keyCode == 8 && 6 <= input_5.value.length) {
+                    input_5.focus();
+                }
+            }
+            input_6.onkeydown = function () {
+                var event = event || window.event;
+                if (event.keyCode == 8 && input_6.value.length == 0) {
+                    input_5.focus();
+                } else if (event.keyCode == 8 && 7 <= input_6.value.length) {
+                    // input_2.focus();
+                } else if (input_6.value.length >= 7) {
+                    input_6.focus();
+                }
+                if (event.keyCode == 8 && 7 <= input_6.value.length) {
+                    input_6.focus();
+                }
+            }
+        };
+        //-------------------자동포커스 설정 끝-------------------------------------------
+        function check_input() {
+            var str = document.input_form.id.value;
+            if (str == "") {
+                alert("아이디를 입력하세요.");
+                document.input_form.id.focus();
+                return false;
+            }
+
+            else if (str.length < 6 || str.length > 10) {
+                alert("아이디 길이 확인 ( 6~10자리)");
+                document.input_form.id.focus();
+                return false;
+            }
+            else if (/^[A-Za-z0-9]{6,10}$/.test(str) == false) {
+                alert('아이디 특수문자');
+                return false;
+            }
+
+            ///비밀번호 
+            var str1 = document.input_form.pw.value;
+            if (str1 == "") {
+                alert("비밀번호를 입력하세요.");
+                document.input_form.pw.focus();
+                return false;
+            }
+
+            else if (str1.length < 6 || str1.length > 10) {
+                alert("비밀번호 확인 ( 6~10자리)");
+                document.input_form.pw.focus();
+                return false;
+            }
+            else if (/^[A-Za-z0-9]{6,10}$/.test(str) == false) {
+                alert('비밀번호 특수문자');
+                return false;
+            }
+
+            //비밀번호 확인
+            var str2 = document.input_form.pw2.value;
+            if (str1 != str2) {
+                alert("비밀번호와 비밀번호 확인이 같지 않습니다.");
+                document.input_form.pw2.focus();
+                return false;
+            }
+
+            // else if (str2.length < 6 || str2.length > 10) {
+            //     alert("비밀번호 확인 ( 6~10자리)");
+            //     document.input_form.pw2.focus();
+            //     return false;
+            // }
+
+            // else {
+            //     for (i = 0; i < str2.length; i++) {
+            //         ch1 = str2.substring(i, i + 1);
+            //         if (!((ch1 >= "0" && ch1 <= "9") || (ch1 >= "a" && ch1 <= "z") || (ch1 >= "A" && ch1 <= "Z"))) {
+            //             alert("특수문자 포함, 다시 입력");
+            //             document.input_form.pw2.focus();
+            //             return false;
+            //         }
+            //     }
+            // }
+
+            //주민번호 확인
+            var str3 = document.input_form.jumin1.value;
+            var str4 = document.input_form.jumin2.value;
+            if (str3 == "") {
+                alert("주민번호(앞자리)를 입력하세요!!");
+                document.input_form.jumin1.focus();
+                return false;
+            }
+            else if (document.input_form.jumin2.value == "") {
+                alert("주민번호(뒷자리)를 입력하세요!!");
+                document.input_form.jumin2.focus();
+                return false;
+            }
+            // else if (str3.length != 6) {
+            //     alert("주민번호 확인(생년월일 6자리)!!")
+            //     document.input_form.jumin1.focus();
+            //     return false;
+            // }
+            // else if (str4.length != 7) {
+            //     alert("주민번호 확인(7자리 확인)!!")
+            //     document.input_form.jumin1.focus();
+            //     return false;
+            // }
+            else {
+                str = str3 + str4;
+                var w = 2, hap = 0, chk;
+                for (var i = 0; i < str.length - 1; i++) {
+                    var ch = str.substring(i, i + 1);
+                    if (!(ch >= "0" && ch <= "9")) {
+                        alert("특수문자가 포함, 다시 입력!!")
+                        document.input_form.jumin1.focus();
+                        return false;
+                    }
+                    // else if(i == (str.length -1)) {
+                    //             continue;
+                    //         hap += parseInt(ch) * w;
+                    //         w++;
+                    //         if(w == 10)
+                    //             w=2;
+                    //     }
+                    hap += parseInt(str.substring(i, i + 1)) * w;
+                    w++;
+                    if (w == 10)
+                        w = 2;
+                }
+                console.log(str);
+
+                chk = 11 - (hap % 11);
+
+                if (chk == 10) {
+                    chk = 0;
+                }
+                else if (chk == 11) {
+                    chk = 1;
+                }
+                console.log(chk)
+                if (chk != str.substring(str.length - 1, str.length)) {
+                    alert("주민번호 오류, 다시입력!!")
+                    document.input_form.jumin1.focus();
+                    return false;
+                }
+            }
+
+            ///-------------------------성별체크---------------
+            var str4 = document.input_form.gender.value;
+            if (document.input_form.gender.value == '' || document.input_form.gender.value == '') {
+                alert("성별을 선택하세요!!");
+                return false;
+            }
+            // if(document.input_form.gender[0].checked = true)
+            //     str = ocument.input_form.gender[0].checked = trued
+            // else 
+            //     str = document.input_form.gender[1].value ;
+            // chk_list += "성별=" + str + "\n";
+
+            // alert(chk_list);
+            // return false;
+
+            // ----------------------------------------------------------------------------
+
+            var str5 = document.input_form.tel1.value;
+            if (str5 == "") {
+                alert("전화번호를 입력하세요.");
+                document.input_form.tel1.focus();
+                return false;
+            }
+
+            else if (str5.length < 3) {
+                alert("전화번호 앞자리를 확인하세요");
+                document.input_form.tel1.focus();
+                return false;
+            }
+            else {
+                for (i = 0; i < str5.length; i++) {
+                    ch1 = str5.substring(i, i + 1);
+                    if (!((ch1 >= "0" && ch1 <= "9"))) {
+                        alert("숫자만 입력해주세요.");
+                        document.input_form.tel1.focus();
+                        return false;
+                    }
+                }
+            }
+
+            var str6 = document.input_form.tel2.value;
+            if (str6 == "") {
+                alert("전화번호를 입력하세요.");
+                document.input_form.tel2.focus();
+                return false;
+            }
+
+            else if (str6.length < 3) {
+                alert("전화번호 중간자리를 확인하세요");
+                document.input_form.tel2.focus();
+                return false;
+            }
+            else {
+                for (i = 0; i < str6.length; i++) {
+                    ch1 = str6.substring(i, i + 1);
+                    if (!((ch1 >= "0" && ch1 <= "9"))) {
+                        alert("숫자만 입력해주세요.");
+                        document.input_form.tel2.focus();
+                        return false;
+                    }
+                }
+            }
+
+            var str7 = document.input_form.tel3.value;
+            if (str7 == "") {
+                alert("전화번호를 입력하세요.");
+                document.input_form.tel3.focus();
+                return false;
+            }
+
+            else if (str7.length < 3) {
+                alert("전화번호 뒷자리를 확인하세요");
+                document.input_form.tel3.focus();
+                return false;
+            }
+            else {
+                for (i = 0; i < str7.length; i++) {
+                    ch1 = str7.substring(i, i + 1);
+                    if (!((ch1 >= "0" && ch1 <= "9"))) {
+                        alert("숫자만 입력해주세요.");
+                        document.input_form.tel3.focus();
+                        return false;
+                    }
+                }
+            }
+            //--------------자동 포커스 설정-------------------
+            // window.onload = function () {
+            //     var input_1 = document.getElementsByID('tel1');
+            //     var input_2 = document.getElementByID('tel2');
+            //     var input_3 = document.getElementByID('tel3');
+
+            //     input_1.onkeydown = function () {
+            //     //     if (str5.keycode == 3){
+            //     //         input_2.focus;
+            //         // }
+            //         if(3 <= input_1.value.length) {
+            //             input_2.focus();
+            //         }
+            //     }
+            // };
+            //---------------이메일--------------------
+            var str8 = document.input_form.email1.value;
+            if (str8 == "") {
+                alert("이메일을 입력하세요.");
+                document.input_form.email1.focus();
+                return false;
+            }
+            var str9 = document.input_form.email2.value;
+            if (str9 == "") {
+                alert("메일주소를 선택하세요.");
+                document.input_form.email2.focus();
+                return false;
+            }
+            //---------------------취뮈-----------------
+            // if (!(
+            //     document.input_form.hobby.value == '등산' || 
+            //     document.input_form.hobby.value == '독서' ||
+            //     document.input_form.hobby.value == '스키' ||
+            //     document.input_form.hobby.value == '음악' ||
+            //     str10.value == '영화' 
+            //     )) {
+            //             alert("취미를 하나이상 선택하세요!!");
+            //             return false;
+            //         }  
+
+            var str10 = document.input_form.hobby;
+            var chk_arr = [];
+            for (var i = 0; i < str10.length; i++) {
+                if (str10[i].checked == true) {
+                    chk_arr += str10[i].value + ' ';
+                }
+            }
+            if (chk_arr == '') {
+                alert("취미를 하나 이상 체크해주세요.");
+                return false;
+            }
+            //--------자기소개-------------
+            var str11 = document.input_form.intro.value;
+            if (str11 == "") {
+                alert("자기소개를 써주세요.");
+                document.input_form.intro.focus();
+                return false;
+            }
+            // -----------출력-----------
+            alert(`
+아이디 : ${str}
+비밀번호 : ${str1}
+주민등록번호 : ${str3}
+성별 : ${str4}
+휴대폰 번호 : ${str5} - ${str6} - ${str7}
+이메일 : ${str8}@${str9} 
+취미: ${chk_arr}
+자기소개 : ${str11}
+            `)
+        }
+    </script>
+</head>
+
+<body>
+    <button id = "myBtn">open modal</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+    <form name="input_form" method="post">
+        <table align="center" border="1">
+            <tr>
+                <td width="110">아이디</td>
+                <td width="400">
+                    <input type="text" name="id" size="30" style="ime-mode:inactive" required
+                        placeholder="최소6~최대10, 숫자와 알파벳만 사용">
+                </td>
+            </tr>
+            <tr>
+                <td width="110">비밀번호</td>
+                <td width="400">
+                    <input type="password" name="pw" size="30" style="ime-mode:inactive"
+                        placeholder="최소6~최대10, 숫자와 알파벳만 사용">
+                </td>
+            </tr>
+            <tr>
+                <td width="110">비밀번호 확인</td>
+                <td width="400">
+                    <input type="password" name="pw2" size="30" style="ime-mode:inactive"
+                        placeholder="최소6~최대10, 숫자와 알파벳만 사용">
+                </td>
+            </tr>
+            <tr>
+                <td width="110">주민등록번호</td>
+                <td width="400">
+                    <input type="text" name="jumin1" id="jumin1" size="6" maxlength="6"> -
+                    <input type="password" name="jumin2" id="jumin2" size="7" maxlength="7">
+                </td>
+            </tr>
+            <tr>
+                <td width="110">성별</td>
+                <td width="400">
+                    <input type="radio" name="gender">남자
+                    <input type="radio" name="gender">여자
+                </td>
+            </tr>
+            <tr>
+                <td>휴대폰 번호</td>
+                <td><input type="tel" name="tel1" id="tel_1" size="3" maxlength="3"> -
+                    <input type="tel" name="tel2" id="tel_2" size="4" maxlength="4"> -
+                    <input type="tel" name="tel3" id="tel_3" size="4" maxlength="4">
+                </td>
+            </tr>
+            <tr>
+                <td width="110">이메일</td>
+                <td width="400">
+                    <input type="text" name="email1" size="10" style="ime-mode:inactive"> @
+                    <select name="email2">
+                        <option value="">메일주소선택
+                        <option value="hanmail.net">hanmail.net
+                        <option value="naver.com">naver.com
+                        <option value="nate.com">nate.com
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="110">취미</td>
+                <td width="400">
+                    <input type="checkbox" name="hobby" value="등산">등산
+                    <input type="checkbox" name="hobby" value="독서">독서
+                    <input type="checkbox" name="hobby" value="스키">스키
+                    <input type="checkbox" name="hobby" value="음악">음악
+                    <input type="checkbox" name="hobby" value="영화">영화
+                </td>
+            </tr>
+            <tr>
+                <td width="110">자기소개</td>
+                <td width="400">
+                    <textarea name="intro" rows="5" cols="50" style="ime-mode:active"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" width="500">
+                    <input type="button" value="입력" onclick="check_input();">
+                    <input type="reset" name="reset" value="취소">
+                </td>
+            </tr>
+        </table>
+    </form>
+    </div>
+    </div>
+</body>
+
+</html>

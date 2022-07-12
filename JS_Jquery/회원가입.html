@@ -3,8 +3,60 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <title>Insert title here</title>
+    <title>회원가입 양식</title>
+
     <script>
+        //-----------------전화번호 자동포커스 설정-------------------------------
+        window.onload = function () {
+            var input_1 = document.getElementById('tel_1');
+            var input_2 = document.getElementById('tel_2');
+            var input_3 = document.getElementById('tel_3');
+            input_1.onkeydown = function () {
+                if (3 <= input_1.value.length) {
+                    input_2.focus();
+                }
+            }
+            input_2.onkeydown = function () {
+                var event = event || window.event;
+                if (event.keyCode == 8 && input_2.value.length == 0) {
+                    input_1.focus();
+                } else if (event.keyCode == 8 && 4 <= input_2.value.length) {
+                    // input_2.focus();
+                } else if (input_2.value.length >= 4) {
+                    input_3.focus();
+                }
+            }
+
+            input_3.onkeydown = function () {
+                var event = event || window.event;
+                if (event.keyCode == 8 && input_3.value.length == 0) {
+                    input_2.focus();
+                } else if (event.keyCode == 8 && 4 <= input_2.value.length) {
+                    // input_2.focus();
+                } else if (input_3.value.length >= 4) {
+                    input_2.focus();
+                }
+            }
+            //-------------주민등록번호 자동포커스설정----------------------------
+                var input_5 = document.getElementById('jumin1');
+                var input_6 = document.getElementById('jumin2');
+                input_5.onkeydown = function () {
+                if (6 <= input_5.value.length) {
+                    input_6.focus();
+                }
+        }
+        input_6.onkeydown = function () {
+                var event = event || window.event;
+                if (event.keyCode == 8 && input_6.value.length == 0) {
+                    input_5.focus();
+                } else if (event.keyCode == 8 && 7 <= input_6.value.length) {
+                    // input_2.focus();
+                } else if (input_6.value.length >= 7) {
+                    input_6.focus();
+                }
+            }
+    };
+    //-------------------자동포커스 설정 끝-------------------------------------------
         function check_input() {
             var str = document.input_form.id.value;
             if (str == "") { 
@@ -84,7 +136,7 @@
         alert("주민번호(앞자리)를 입력하세요!!");
         document.input_form.jumin1.focus();
         return false;
-    }
+    } 
     else if (document.input_form.jumin2.value == "") {
         alert("주민번호(뒷자리)를 입력하세요!!");
         document.input_form.jumin2.focus();
@@ -225,6 +277,21 @@
             }
         }
     }
+    //--------------자동 포커스 설정-------------------
+    // window.onload = function () {
+    //     var input_1 = document.getElementsByID('tel1');
+    //     var input_2 = document.getElementByID('tel2');
+    //     var input_3 = document.getElementByID('tel3');
+
+    //     input_1.onkeydown = function () {
+    //     //     if (str5.keycode == 3){
+    //     //         input_2.focus;
+    //         // }
+    //         if(3 <= input_1.value.length) {
+    //             input_2.focus();
+    //         }
+    //     }
+    // };
     //---------------이메일--------------------
     var str8 = document.input_form.email1.value;
     if (str8 == "") {
@@ -280,13 +347,11 @@
     자기소개 : ${str11}
     `)
 }
-
     </script>
 </head>
 
 <body>
-
-
+    
     <form name="input_form" method="post">
         <table align="center" border="1">
             <tr>
@@ -313,8 +378,8 @@
             <tr>
                 <td width="110">주민등록번호</td>
                 <td width="400">
-                    <input type="text" name="jumin1" size="6" maxlength="6"> -
-                    <input type="password" name="jumin2" size="7" maxlength="7">
+                    <input type="text" name="jumin1" id = "jumin1" size="6" maxlength="6"> -
+                    <input type="password" name="jumin2" id = "jumin2" size="7" maxlength="7">
                 </td>
             </tr>
             <tr>
@@ -326,9 +391,9 @@
             </tr>
             <tr>
                 <td>휴대폰 번호</td>
-                <td><input type="tel" name="tel1" size="3" maxlength="3"> -
-                    <input type="tel" name="tel2" size="4" maxlength="4"> -
-                    <input type="tel" name="tel3" size="4" maxlength="4">
+                <td><input type="tel" name="tel1" id = "tel_1" size="3" maxlength="3"> -
+                    <input type="tel" name="tel2" id = "tel_2"  size="4" maxlength="4"> -
+                    <input type="tel" name="tel3" id = "tel_3"  size="4" maxlength="4">
                 </td>
             </tr>
             <tr>
