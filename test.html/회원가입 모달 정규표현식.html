@@ -66,7 +66,7 @@
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
-        
+        //----------------모달------------------------
         window.onload = function () {
             var modal = document.getElementById('myModal');
             var btn = document.getElementById("myBtn");
@@ -163,16 +163,11 @@
                 document.input_form.id.focus();
                 return false;
             }
-            else {
-                for (i = 0; i < str.length; i++) {
-                    ch = str.substring(i, i + 1);
-                    if (!((ch >= "0" && ch <= "9") || (ch >= "a" && ch <= "z") || (ch >= "A" && ch <= "Z"))) {
-                        alert("특수문자 포함, 다시 입력");
-                        document.input_form.id.focus();
-                        return false;
-                    }
-                }
+            else if (/^[A-Za-z0-9]{6,10}$/.test(str) == false) {
+                alert('아이디 특수문자');
+                return false;
             }
+
             ///비밀번호 
             var str1 = document.input_form.pw.value;
             if (str1 == "") {
@@ -186,15 +181,9 @@
                 document.input_form.pw.focus();
                 return false;
             }
-            else {
-                for (i = 0; i < str1.length; i++) {
-                    ch1 = str1.substring(i, i + 1);
-                    if (!((ch1 >= "0" && ch1 <= "9") || (ch1 >= "a" && ch1 <= "z") || (ch1 >= "A" && ch1 <= "Z"))) {
-                        alert("특수문자 포함, 다시 입력");
-                        document.input_form.pw.focus();
-                        return false;
-                    }
-                }
+            else if (/^[A-Za-z0-9]{6,10}$/.test(str) == false) {
+                alert('비밀번호 특수문자');
+                return false;
             }
 
             //비밀번호 확인
