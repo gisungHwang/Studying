@@ -6,8 +6,7 @@ import {useState} from 'react';
 
 function Wanted() {
     const[pic, setPic,] = useState([
-        {<img src ={abc} alt='asd' className="App-logo" ></img>},
-        {<img src ={abce} alt='asd' className="App-logo" ></img>}
+        <img src ={abc} alt='asd' className="App-logo" ></img>
     ]);
     const onClickEnter = () => setPic(
         <img src ={abcd} alt = "loge" className="App-logo1"/>
@@ -31,3 +30,5 @@ function Wanted() {
     );
     }
 export default Wanted;
+
+

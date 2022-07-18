@@ -5,11 +5,15 @@
 // // import Counter from "./Counter"
 // import Say from './Say';
 // import EvenPractice from './EvenPractice';
-// import Wanted from './Wanted';
+import Wanted from './Wanted';
 
 import { Component } from 'react';
-import Classinput from './Classinput';
-import IterationSample from './iterationSample';
+// import Classinput from './Classinput';
+// import IterationSample from './iterationSample';
+import LifeCycleSample from './LifeCycleSample';
+import ErrorBoundary from './ErrorBoundary';
+import Forminput from './Forminput';
+
 // import ValidationSample from './ValidationSample';
 // import RefSample from './createRef';
 // import ScrollBox from './ScrollBox';
@@ -32,9 +36,9 @@ import IterationSample from './iterationSample';
 //   } 
 // }
 
-// const App  = () => {
-//     return <Counter/>
-//   };
+const App  = () => {
+    return <Forminput/>
+  };
 // const App  = () => {
 //     return (
 //       <div>
@@ -62,15 +66,43 @@ import IterationSample from './iterationSample';
     
 // //   }; */}
 
-  class App extends Component {
-        render(){
-        return(
-        // <Classinput/>
-        <IterationSample/>          
-        );
-      };
-    }
-export default App; //default 없으면 import를 사용할 때 {}를 사용해야 함 
+  // class App extends Component {
+  //       render(){
+  //       return(
+  //       // <Classinput/>
+  //       <IterationSample/>          
+  //       );
+  //     };
+  //   }
+
+
+
+
+//   function getRandomColor() {
+//     return '#' + Math.floor(Math.random() * 16777215).toString(16);
+//   }
+
+//   class App extends Component {
+//     state = {
+//       color: '#000000'
+//     }
+//     handleClick = ()=>{
+//       this.setState({
+//         color:getRandomColor()
+//       });
+//     }
+//     render() {
+//       return(
+//         <div>
+//           <button onClick={this.handleClick}>랜덤 색상</button>
+//           <ErrorBoundary>
+//           <LifeCycleSample color={this.state.color}/>
+//           </ErrorBoundary>
+//         </div>
+//       );
+//     }
+//   }
+// export default App; //default 없으면 import를 사용할 때 {}를 사용해야 함 
 
 
 //rsc = 함수자동
@@ -84,4 +116,4 @@ export default App; //default 없으면 import를 사용할 때 {}를 사용해�
 //   );
 // };
 
-// export default App;
+export default App;

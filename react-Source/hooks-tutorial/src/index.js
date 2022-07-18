@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
+  // <React.StrictMode>  //<<지우면 콘솔창에 한번만 나타남 183p
     <App />
   // </React.StrictMode>
 );
