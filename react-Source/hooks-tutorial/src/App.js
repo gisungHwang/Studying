@@ -4,6 +4,7 @@ import Counter from './Counter';
 import Info from './info';
 import { useState } from 'react';
 import Forminput from './Forminput';
+import Average from './Average';
 
 // const App = () => {
 // const [visible, setVisible] = useState(false);

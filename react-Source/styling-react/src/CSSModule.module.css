@@ -1,0 +1,18 @@
+
+.wrapper {
+    background : black;
+    padding : 1rem;
+    color : gold;
+    font-size: 2rem
+    
+}
+.inverted {
+    color: skyblue;
+    background : gold;
+    border: 5px solid black;
+}
+:global .something {
+    font-weight: 800;
+    color:hotpink;
+    
+}

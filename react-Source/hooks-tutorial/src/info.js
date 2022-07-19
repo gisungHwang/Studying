@@ -1,22 +1,22 @@
-import {useReducer} from 'react';
+import {useInputs} from 'react';
 
-function reducer(state, action) {
-    return {
-        ...state,
-        [action.name]: action.value  //action은 input 안의 값을 받아와서 호출
-    };
-}
+// function reducer(state, action) {
+//     return {
+//         ...state,
+//         [action.name]: action.value  //action은 input 안의 값을 받아와서 호출
+//     };
+// }
 const Info = () => {
-    const [state, dispatch] = useReducer(reducer, {
+    const [state, onChange] = useInputs( {
         name:'',
         nickname:''
     });
 
     const {name, nickname} = state;  //input안의 value값 때문에 선언
 
-    const onChange = e => {
-        dispatch(e.target);  //reducer함수 여기서 호출
-    }
+    // const onChange = e => {
+    //     dispatch(e.target);  //reducer함수 여기서 호출
+    // }
     
         return(
             <div>
