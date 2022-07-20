@@ -1,0 +1,28 @@
+
+
+.TodoTemplate {
+    width: 512px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    // overflow: hidden;
+    margin-top: 150px;
+    // animation: App-logo-spin infinite 10s linear;
+
+
+.app-title {
+    background: #3fc64c;
+    color: rgb(199, 71, 182);
+    height: 4rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.content {
+    background: white;
+}
+}
