@@ -5,6 +5,7 @@ import Info from './info';
 import { useState } from 'react';
 import Forminput from './Forminput';
 import Average from './Average';
+import Test from './Test';
 
 // const App = () => {
 // const [visible, setVisible] = useState(false);
@@ -25,6 +26,7 @@ import Average from './Average';
 
 const App = () => {
   return  <Forminput/>;
+          <Test/>;
 };
 export default App;
 

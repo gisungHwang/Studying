@@ -8,7 +8,7 @@
 import Wanted from './Wanted';
 
 import { Component } from 'react';
-// import Classinput from './Classinput';
+import Classinput from './Classinput';
 // import IterationSample from './iterationSample';
 import LifeCycleSample from './LifeCycleSample';
 import ErrorBoundary from './ErrorBoundary';
@@ -108,12 +108,12 @@ const App  = () => {
 //rsc = 함수자동
 // import React from 'react';
 
-// const App = () => {
-//   return (
-//     <div>
-      
-//     </div>
-//   );
-// };
+const App = () => {
+  return (
+    <div>
+      <Classinput/>
+    </div>
+  );
+};
 
 export default App;

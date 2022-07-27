@@ -80,6 +80,7 @@ const Forminput = () => {
             </tr>
         </table>
         </center>
+        <button onKeyPress={onKeyPress}>다음페이지</button>
         </div>
     )
 };
