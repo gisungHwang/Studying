@@ -1,0 +1,164 @@
+.searchs {
+    text-align: center;
+    margin-top: 15%;
+}
+
+.search_form {
+    margin: 0 auto;
+}
+@media only screen and (max-device-width : 768px) {
+    .search_form {
+            padding-bottom: 400px;
+        }
+    
+    .movie {
+        width: 55%;
+    }
+}
+
+select { 
+    margin: 10px;
+    margin-top: 20px;
+    font-size: 15px;
+    padding: 10px;
+    transition: 0.3s;
+    text-align: center;
+    background-color: #ececec;
+    border: none;
+    border-radius: 3px;
+    border: 1px solid #ececec;
+}
+
+select:hover {
+    // box-shadow: 1px 2px 2px rgb(128, 128, 128);
+    border-color: black;
+    transition: 0.3s;
+}
+
+/* button {
+    font-size: 15px;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+} */
+
+input {
+    width: 630px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 30px;
+    border: 1px solid #7c7c7c;
+    /* border-radius: 10%; */
+}
+
+input::placeholder {
+    float: right;
+    padding-top: 2px;
+    padding-right: 15px;
+    font-size: 30px;
+}
+
+input:hover {
+    box-shadow: 1px 2px 6px rgb(185, 185, 185)
+}
+
+.wrapper {
+    position: absolute;
+    left: 45%;
+    top: 17%;
+    transform: translate(-50%, -50%);
+    width: 235px;
+    height: 70px;
+    vertical-align: center;
+    // white-space: nowrap;
+}
+
+//html의 왼쪽 50% 위 25%에 배치, transform : 요소를 왼쪽에서 50퍼 위에서 50퍼 white-space는 연속공백을 하나로 합치고 한줄로
+
+.focus {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: Arial;
+    letter-spacing: 2px;
+    filter: blur(3px);
+    font-size: 65px;
+    // opacity: 0.6;
+    color: #96DEF2;
+}
+
+.m {
+    color: #4284ff;
+}
+
+.o1 {
+    color: #d80000;
+}
+
+.o2 {
+    color: #ffbb00;
+}
+
+.g {
+    color: #4284ff;
+}
+
+.l {
+    color: #009b0d;
+}
+
+.e {
+    color: #d80000;
+}
+
+//와퍼의 왼쪽 50퍼, 요소를 위에서 50퍼, 흐리게, 
+.mask {
+    position: absolute;
+    padding: 5%;
+    width: 200px;
+    height: 150px;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 100px;
+    clip: rect(0px, 200px, 150px, 0px);
+    background:
+        linear-gradient(#96DEF2, #96DEF2 0) no-repeat,
+        linear-gradient(to right, #96DEF2, #96DEF2 0) no-repeat,
+        linear-gradient(to right, #96DEF2, #96DEF2 0) bottom left no-repeat,
+        //왼아래 위
+        linear-gradient(to right, #96DEF2, #96DEF2 0) bottom left no-repeat,
+        //왼아래 아래
+        linear-gradient(#96DEF2, #96DEF2 0) bottom right no-repeat,
+        linear-gradient(#96DEF2, #96DEF2 0) bottom right no-repeat,
+        linear-gradient(#96DEF2, #96DEF2 0) top right no-repeat,
+        //오른쪽 위 왼
+        linear-gradient(#96DEF2, #96DEF2 0) top right no-repeat;
+    //오른쪽 위 오
+    background-size: 30px 5px, 5px 30px, 5px 30px, 30px 5px, 5px 30px, 30px 5px, 30px 5px, 5px 30px, 30px 5px;
+    color: #3CA2BD;
+    transform: translateX(-30px);
+    box-sizing: border-box;
+    animation: mask linear 3s infinite alternate;
+}
+
+//와퍼의 -5px 위-2px 
+//***clip***요소의 특정부분만 나오게 하는 효과 rect안쪽 (위를기준 시작, 왼쪽을 기준 끝, 위를 기준끝, 왼쪽 기준
+.text {
+    transform: translateX(30px);
+    animation: text linear 3s infinite alternate;
+}
+
+@keyframes mask {
+    to {
+        transform: translateX(180px);
+    }
+}
+
+@keyframes text {
+    to {
+        transform: translateX(-180px);
+    }
+}

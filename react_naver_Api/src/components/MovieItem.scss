@@ -1,0 +1,95 @@
+// .movie_div {
+//     // display: inline-block;
+//     width: 30%;
+// }
+.block_div {
+    margin-top: 25%;
+}
+
+@media only screen and (max-device-width : 768px) {   
+    
+    .mask {
+        margin-bottom: 100px;
+        right: 85px;
+        
+    }
+    .input.text {
+        width: 580px;
+        padding-left: 20px;
+    }
+    .search_form{
+        padding-top: 200px;
+    }
+
+    .wrapper {
+        text-align: center;
+        width: 50px;
+    }
+    
+    }
+
+    .searchs {
+        text-align: center;
+        margin-left: 2%;
+        margin-bottom: 2px;
+    }
+    
+    
+
+.movie {
+    width: 25%;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 5%;
+    margin-top: 30px;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    padding: 10px;
+    border: 1px solid;
+    box-shadow: 10px 5px 5px rgb(90, 90, 90);
+    border-radius: 5px;
+    padding: 0px;
+    display: inline-block;
+    overflow: hidden;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.movie:hover {
+    transition: 1s;
+    transform: translate(-1%, -1%);
+}
+
+
+
+.thumbnail {
+    // margin-right: 1rem;
+    padding: 1rem;
+
+    img {
+        display: inline-block;
+        width: 200px;
+        height: 150%;
+        object-fit: cover;
+    }
+}
+
+.contents {
+    padding: 2rem;
+
+    h2 {
+        margin: 0;
+        // padding-top: 2px;
+
+        a {
+            color: black;
+        }
+    }
+
+    p {
+        margin: 0;
+        line-height: 1.5;
+        margin-top: 0.5rem;
+        white-space: normal;
+    }
+}
