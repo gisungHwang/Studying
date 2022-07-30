@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useCallback, useRef, useState } from 'react';
 import MovieItem from './MovieItem';
-// import MovieListBlock from './MovieListBlock';
 import './MovieList.scss'
 
 const MovieList = () => {
     const [items, setItems] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [ScrollTop, setScrollTop] = useState(null);
 
     const Ref1 = useRef();
     const Ref2 = useRef(0);
@@ -15,11 +15,33 @@ const MovieList = () => {
     const Ref5 = useRef();
     const Ref6 = useRef(null);
 
+    const onClickTop = useCallback(
+        () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+            setScrollTop();
+        },
+        []  //[]는 컴포넌트가 처음 렌더링될 때만 함수 생성한다는 의미
+    )
+
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
 
-            Ref6.current?.scrollIntoView({ behavior: 'smooth' });
+            if (Ref4.current.value > Ref5.current.value) {
+                alert('제작년도 설정이 잘못되었습니다.');
+                return false;
+            } else if (
+                (Ref4.current.value === Ref5.current.value) &&
+                !(Ref4.current.value === '' && Ref5.current.value === '')
+            ) {
+                alert('제작년도 범위를 정확히 지정해주세요.');
+                return false;
+            }
+
+            Ref6.current.scrollIntoView({ behavior: 'smooth' });
 
             const fetchData = async () => {
                 const NAVER_CLIENT_ID = 'SPW_iLqHpIeAA3MQiJHH';
@@ -56,16 +78,6 @@ const MovieList = () => {
         []
     );
 
-    // if (loading) {
-    //     return (
-    //         '영화를 불러오는 중 입니다...'
-    //     );
-    // }
-
-    // if (!items) {
-    //     return null;
-    // }
-
     return (
         <div className='searchs'>
             <div className="wrapper">
@@ -89,7 +101,7 @@ const MovieList = () => {
                 />
                 <br />
                 <select
-                    ref={Ref2}   //className='select_1'
+                    ref={Ref2}
                 >
                     <option value="">장르 선택</option>
                     <option value="0">전체</option>
@@ -122,6 +134,7 @@ const MovieList = () => {
                     <option value="27">영화음악</option>
                     <option value="28">영화패러디포스터</option>
                 </select>
+                |
                 <select
                     ref={Ref3}
                 >
@@ -134,10 +147,11 @@ const MovieList = () => {
                     <option value="FR">프랑스</option>
                     <option value="ETC">기타</option>
                 </select>
+                |
                 <select
                     ref={Ref4}
                 >
-                    <option value="">첫 번째 제작년도</option>
+                    <option value="">제작년도</option>
                     <option value="1960">1960년도</option>
                     <option value="1970">1970년도</option>
                     <option value="1980">1980년도</option>
@@ -146,10 +160,11 @@ const MovieList = () => {
                     <option value="2010">2010년도</option>
                     <option value="2020">2020년도</option>
                 </select>
+                <b>~</b>
                 <select
                     ref={Ref5}
                 >
-                    <option value="">두 번째 제작년도</option>
+                    <option value="">제작년도</option>
                     <option value="1960">1960년도</option>
                     <option value="1970">1970년도</option>
                     <option value="1980">1980년도</option>
@@ -159,10 +174,14 @@ const MovieList = () => {
                     <option value="2020">2020년도</option>
                 </select>
                 <br />
-                {/* <button type='submit'>검색</button> */}
             </form>
+            <button
+                className='top_btn'
+                onClick={onClickTop}
+            >
+                ▲
+            </button>
             <div className='block_div' ref={Ref6}>
-                {/* <MovieListBlock> */}
                 {items &&
                     items.items.map((item) => {
                         return (
@@ -172,7 +191,6 @@ const MovieList = () => {
                             />
                         );
                     })}
-                {/* </MovieListBlock> */}
             </div>
         </div>
     );

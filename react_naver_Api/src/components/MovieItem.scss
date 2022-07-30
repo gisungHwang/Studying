@@ -1,40 +1,6 @@
-// .movie_div {
-//     // display: inline-block;
-//     width: 30%;
-// }
 .block_div {
     margin-top: 25%;
 }
-
-@media only screen and (max-device-width : 768px) {   
-    
-    .mask {
-        margin-bottom: 100px;
-        right: 85px;
-        
-    }
-    .input.text {
-        width: 580px;
-        padding-left: 20px;
-    }
-    .search_form{
-        padding-top: 200px;
-    }
-
-    .wrapper {
-        text-align: center;
-        width: 50px;
-    }
-    
-    }
-
-    .searchs {
-        text-align: center;
-        margin-left: 2%;
-        margin-bottom: 2px;
-    }
-    
-    
 
 .movie {
     width: 25%;
@@ -55,12 +21,49 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 376px) and (min-width: 0px) {
+    .movie {
+        width: 100%;
+        margin-left: 35%;
+    }
+}
+
+@media screen and (max-width: 426px) and (min-width: 377px) {
+    .movie {
+        width: 300px;
+        margin-left: 37%;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 427px) {
+    .mask {
+        margin-bottom: 100px;
+        right: 85px;
+    }
+
+    .input.text {
+        width: 580px;
+        padding-left: 20px;
+    }
+
+    .search_form {
+        padding-top: 200px;
+    }
+
+    .wrapper {
+        text-align: center;
+        width: 50px;
+    }
+
+    .movie {
+        width: 55%;
+    }
+}
+
 .movie:hover {
     transition: 1s;
     transform: translate(-1%, -1%);
 }
-
-
 
 .thumbnail {
     // margin-right: 1rem;
