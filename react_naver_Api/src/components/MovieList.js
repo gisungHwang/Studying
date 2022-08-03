@@ -8,7 +8,7 @@ const MovieList = () => {
     const [loading, setLoading] = useState(false);
     const [ScrollTop, setScrollTop] = useState(null);
 
-    const Ref1 = useRef();
+    const Ref1 = useRef();  //useRef는 지정
     const Ref2 = useRef(0);
     const Ref3 = useRef();
     const Ref4 = useRef();
@@ -30,7 +30,7 @@ const MovieList = () => {
         (e) => {
             e.preventDefault();
 
-            if (Ref4.current.value > Ref5.current.value) {
+            if (Ref4.current.value > Ref5.current.value) { 
                 alert('제작년도 설정이 잘못되었습니다.');
                 return false;
             } else if (
@@ -54,7 +54,7 @@ const MovieList = () => {
                         '/v1/search/movie',
                         {
                             params: {
-                                query: Ref1.current.value, // 이미지 검색 텍스트
+                                query: Ref1.current.value, // 이미지 검색 텍스트, current쓰는 이유는 current:value
                                 genre: Ref2.current.value,
                                 country: Ref3.current.value,
                                 yearfrom: Ref4.current.value,
