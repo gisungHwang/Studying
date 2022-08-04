@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 const data = {
     velopert: {
         name: '문경현',
-        description: '리액트를 좋아하는 개발자',
+        description: 'ㄴ',
     },
     gisung : {
     name: '전우진',
