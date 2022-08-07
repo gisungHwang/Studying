@@ -1,9 +1,10 @@
 
 import React from 'react';
 import './Test1.scss';
-import date from './date1.png';
+import date from './img/date1.png';
 import {Link} from 'react-router-dom';
 
+//08.03
 const Test1 = () => {
     return (
         <div>
@@ -13,12 +14,12 @@ const Test1 = () => {
         
         <fieldset className='go'>
             <legend>MYSQL</legend>
+                <Link to = "/">HOME</Link><br/>
                 
+                <Link to = "/Project/gisung">뒤로가기</Link><br/><br/>
+                {/* <Link to = "articles">게시글 목록</Link><br/> */}
                 <h3><code>SQL의 분류</code></h3>
-                <Link to ="/test2">08.03</Link><br/>
-                <Link to = "/Project/velopert">08.04</Link><br/>
-                <Link to = "/Project/gisung">버튼3</Link><br/>
-                <Link to = "articles">게시글 목록</Link>
+                
                 <ul>
                     <li>DML (Data Manipulation Language, 데이터 조작 언어)<br/>-데이터를 조작(선택, 삽입, 수정, 삭제)하는 데 사용되는 언어<br/>-SELECT, INSERT, UPDATE, DELETE</li><br/>
                     <li>DDL (Data Definition Language, 데이터 정의 언어)<br/>-데이터베이스, 테이블, 뷰, 인덱스 등의 데이터베이스 개체를 생성/삭제/변경하는 역할<br/>-CREATE, DROP, ALTER</li><br/>

@@ -1,14 +1,22 @@
 import { useParams } from "react-router-dom";
+import Test1_1 from './Test1_1';
+import TEST2 from './Test2';
+import Test3 from './Test3';
 
 const data = {
-    velopert: {
-        name: '문경현',
-        description: 'ㄴ',
-    },
+    
     gisung : {
-    name: '전우진',
-    description: '그냥 코딩을 좋아하는 남자'
-    }
+    description: <Test1_1/>
+    },
+
+    velopert: {
+        description: <Test3/>
+    },
+    
+    // velopert: {
+    //     description: <Test4/>
+    // },
+
 };
 
 const Project = () => {
@@ -16,13 +24,12 @@ const Project = () => {
     const project = data[params.username];
 
     return (
+        
         <div>
-            <h1>사용자 프로필</h1>
-        <div>
-            <h2>{project.name}</h2>
+            {/* <h2>{project.name}</h2> */}
             <p>{project.description}</p>
         </div>
-        </div>
+    
     );
 };
 

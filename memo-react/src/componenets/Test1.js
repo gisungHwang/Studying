@@ -1,8 +1,9 @@
 import React from 'react';
 import './Test1.scss';
-import date from './date1.png';
+import date from './img/date1.png';
 import {Link} from 'react-router-dom';
 
+//첫페이지
 const Test1 = () => {
     return (
         <div>
@@ -11,12 +12,13 @@ const Test1 = () => {
             </div>
         
         <fieldset className='go'>
-            <legend>MYSQL</legend>
+            <legend>날짜별 노트</legend>
                 
-                <h3><code>날짜별 노트</code></h3>
-                <Link to ="/test2">08.03</Link><br/><br/>
-                <Link to = "/Project/velopert">08.04</Link><br/><br/>
-                <Link to = "/Project/gisung">버튼3</Link><br/><br/>
+                <h3><code></code></h3>
+                {/* <Link to ="/test2">08.03</Link><br/><br/>
+                <Link to = "/test3">08.04</Link><br/><br/> */}
+        
+                <Link to = "/Project/gisung">복습</Link><br/><br/>
                 <Link to = "articles">게시글 목록</Link><br/><br/>
                 {/* <ul>
                     <li>DML (Data Manipulation Language, 데이터 조작 언어)<br/>-데이터를 조작(선택, 삽입, 수정, 삭제)하는 데 사용되는 언어<br/>-SELECT, INSERT, UPDATE, DELETE</li><br/>

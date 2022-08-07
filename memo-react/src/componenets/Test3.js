@@ -1,69 +1,80 @@
 
 import React from 'react';
 import './Test1.scss';
-import date from './date1.png';
+import Case from './img/case.png';
 import {Link} from 'react-router-dom';
+import Instr from './img/INSTR.png';
+import Trim from './img/TRIM.png';
 
+//08.04
 const Test1 = () => {
     return (
         <div>
             <div className='legeno'>
-            <h1 align='center'>리액트로 복습하기</h1>
+            <h1 align='center'>리액트로 복습하기test3</h1>
             </div>
         
         <fieldset className='go'>
             <legend>MYSQL</legend>
+                {/* <Link to ="/test2">08.03</Link><br/>
+                <Link to = "/test3">08.04</Link><br/> */}
+                <Link to = "/">HOME</Link><br/>
+                <Link to = "/Project/gisung">뒤로가기</Link><br/><br/>
+                {/* <Link to = "articles">게시글 목록</Link> */}
+                <h1><code>MYSQL 내장함수</code></h1>
                 
-                <h3><code>SQL의 분류</code></h3>
-                <Link to ="/test2">08.03</Link><br/>
-                <Link to = "/Project/velopert">08.04</Link><br/>
-                <Link to = "/Project/gisung">버튼3</Link><br/>
-                <Link to = "articles">게시글 목록</Link>
+                
+                <h2>내장함수</h2>
                 <ul>
-                    <li>DML (Data Manipulation Language, 데이터 조작 언어)<br/>-데이터를 조작(선택, 삽입, 수정, 삭제)하는 데 사용되는 언어<br/>-SELECT, INSERT, UPDATE, DELETE</li><br/>
-                    <li>DDL (Data Definition Language, 데이터 정의 언어)<br/>-데이터베이스, 테이블, 뷰, 인덱스 등의 데이터베이스 개체를 생성/삭제/변경하는 역할<br/>-CREATE, DROP, ALTER</li><br/>
-                    <li>DCL (Data Control Language, 데이터 제어 언어)<br/>-사용자에게 어떤 권한을 부여하거나 빼앗을 때 주로 사용하는 구문<br/>-GRANT/REVOKE/DENY</li>
-                </ul><br/>
+                    <li>
+                        흐름 함수, 문자열 함수, 수학 함수, 날짜/시간 함수, 전체 텍스트 검색 함수, 형 변환 함수, XML 함수, 비트 함수, 보안/압축 함 수, 정보 함수, 공간 분석 함수, 기타 함수 등<br/>
+                    </li>
+                </ul>
+                
+                <h2>제어 흐름 함수</h2>
+                <ul>
+                    <li>IF (수식, 참, 거짓)</li><br/>
+                    <li>IFNULL(수식1, 수식2)<br/> -수식1이 NULL이 아니면 수식1이 반환되고 수식1이 NULL이면 수식2가 반환</li><br/>
+                    <li>CASE ~ WHEN ~ ELSE ~ END<br/>-CASE는 내장 함수는 아니며 연산자(Operator)로 분류</li>
+                    <img src={Case} alt='loading..'></img><br/>
+
+                    <h3>IFNULL(수식1, 수식2)</h3>
+                <li>수식1이 NULL이 아니면 수식1이 반환되고 수식1이 NULL이면 수식2가 반환</li><br/>
+                </ul>
             
-                <h3>SELECT문</h3>
-                <ul>
-                    <li>ANY,SOME<br/>-ANY는 SOME와 동일한 의미로 서브쿼리의 여러 개의 결과 중 한 가지만 만족해도 가능</li><br/>
-                    <li>ALL<br/>- 서브쿼리의 결과 중 여러 개의 결과를 모두 만족해야 가능</li><br/>
-                    <li>ORDER BY<br/>-출력되는 순서를 조절하는 구문<br/>-ASC는 오름차순(디폴트값으로 생략가능)<br/>-DESC는 내림차순</li><br/>
-                    <li>DISTINCT<br/>-중복된 것을 1개씩만 출력해주는 구문</li><br/>
-                    <li>LIMIT<br/>-MYSQL의 부담을 줄여주기 위해 출력개수를 제한해주는 구문</li><br/>
-                </ul><br/>
+                <h2>문자열 함수</h2>
+                <li>CONCAT() : 문자열을 이어줌<br/>-CONCAT(문자열1, 문자열2,…)</li><br/>
+                <li>CONCAT_WS( ) : 구분자와 함께 문자열을 이어주는 역할<br/>-CONCAT_WS(구분자, 문자열1, 문자열2,…)</li><br/>
 
-                <h3>GROUP BY문</h3>
-                <ul>
-                    <li>HAVING<br/>-Where와 비슷한 개념으로 조건을 제한하는 구문<br/>-having절은 꼭 group by절 다음에 나와야함</li><br/>
-                    <li>ROLLUP<br/>-총합 or 중간합계가 필요한 경우 사용하는 구문</li><br/>
-                </ul>
+                <h3>FORMAT(숫자, 소수점 자릿수)</h3>
+                <li>숫자를 소수점 아래 자릿수까지 표현, 1,000단위마다 콤마 표시해줌 </li><br/>
 
-                <h3>INSERT문</h3>
-                <ul>
-                    <li>-예제: insert [into] 테이블[(열1, 열2, ...)] values(값1, 값2 ...)</li><br/>
-                </ul>
+                <h3>INSERT(기준 문자열, 위치, 길이, 삽입할 문자열)</h3>
+                <li>기준 문자열의 위치부터 길이만큼 지우고 삽입할 문자열 끼워 넣음</li><br/>
+                <img src={Instr} alt='loading..' ></img><br/>
 
-                <h3>UPDATE문</h3>
-                <ul>
-                    <li>-예제: update 테이블이름 set 열1=값1, 열2=값2 ... where 조건;<br/>-update 테이블명 set 컬럼명='바뀔컬럼명'where 조건;<br/>-where절 생략 가능하나 where절 생략하면 테이블의 전체 행의 내용 변경되므로 주의</li><br/>
-                </ul>
+                <h3>LEFT(문자열, 길이), RIGHT(문자열, 길이)</h3>
+                <li>왼쪽 또는 오른쪽에서 문자열의 길이만큼 반환</li><br/>
 
-                <h3>DELETE문</h3>
-                <ul>
-                    <li>-예제: delete from 테이블이름 where 조건;<br/>-where절 생략되면 전체 데이터를 삭제함<br/>-DDL문의 DROP과 TRUNCATE와는 다르게 ROLLBACK를 사용하여 되돌리기가 가능</li><br/>
-                </ul>
+                <h3>LPAD(문자열, 길이, 채울 문자열), RPAD(문자열, 길이, 채울 문자열)</h3>
+                <li>문자열을 길이만큼 늘린 후에 빈 곳을 채울 문자열로 채움</li><br/>
 
-                <h3>ALTER문</h3>
-                <ul>
-                    <li>-컬렴명 변경 예제: alter table 테이블명 rename column 변경할 컬럼명 to 변경될 컬럼명;</li><br/><br/>
-                </ul>
+                <h3>TRIM(문자열), TRIM(방향 자를_문자열 FROM 문자열)</h3>
+                <img src={Trim} alt='loading..' ></img><br/>
 
-                <h3>MYSQL에서 지원하는 데이터 형식의 종류</h3>
-                <img className='hihi' src={date} alt='loading..'></img>
-            
+                <h3> SUBSTRING(문자열, 시작위치, 길이) 또는 SUBSTRING(문자열 FROM 시작위치 FOR 길이)</h3>
+                <li>시작위치부터 길이만큼 문자를 반환, 길이가 생략되면 문자열의 끝까지 반환</li><br/>
 
+                <h2>수학 함수</h2>
+                <li>CEILING(숫자), FLOOR(숫자), ROUND(숫자)</li>
+                <li>올림, 내림, 반올림 계산</li><br/>
+
+                <h2>날짜 및 시간 함수</h2>
+                <li>NOW( ), SYSDATE( ) : 현재 ‘연-월-일 시 : 분 : 초</li>
+                <li>now(), date(now()), time(now())</li>
+
+                
+        
         </fieldset>
         </div>
     );
