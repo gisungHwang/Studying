@@ -11,7 +11,7 @@ const Test1 = () => {
     return (
         <div>
             <div className='legeno'>
-            <h1 align='center'>리액트로 복습하기test3</h1>
+            <h1 align='center'>리액트로 복습하기</h1>
             </div>
         
         <fieldset className='go'>

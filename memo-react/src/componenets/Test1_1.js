@@ -16,7 +16,7 @@ const Test1_1 = () => {
             <legend>날짜별 복습현황</legend>
                 <Link to ="/">HOME</Link><br/><br/>
                 <Link to ="/test2">08.03 (MySQL)</Link><br/>
-                <Link to = "/test3">08.04 (MySQL)</Link><br/>
+                <Link to = "/Project/velopert">08.04 (MySQL)</Link><br/>
                 <Link to = "/test4">08.05 (MySQL)</Link><br/>
                 {/* <Link to = "/Project/velopert">복습</Link><br/> */}<br/>
                 {/* <Link to = "/Project/gisung">버튼3</Link><br/><br/>
