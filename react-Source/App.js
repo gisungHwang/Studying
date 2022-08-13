@@ -91,7 +91,7 @@ function App() {
     };
   }, []);
   return (
-   
+  
     <div ref={outerDivRef} className="outer">
       <Dots scrollIndex={scrollIndex} />
       <div className="inner bg-yellow" onKeyPress={onkeyPress}>1</div>
