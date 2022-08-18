@@ -5,6 +5,9 @@ const BoardWrite = ({ handlelist }) => {
   const titleRef = useRef();
   const writerRef = useRef();
   const contentRef = useRef();
+  //이미지 수정
+
+  //이미지수정
 
   const handleInsert = () => {
     console.log("handleInsert =>", titleRef.current.value);
@@ -74,6 +77,9 @@ const BoardWrite = ({ handlelist }) => {
                 ref={writerRef}
                 placeholder="글쓴이를 입력하세요"
               ></input>
+
+              <div></div>
+
             </td>
           </tr>
           <tr>

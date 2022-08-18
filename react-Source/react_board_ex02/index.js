@@ -15,6 +15,7 @@ let corsOptions = {
 
 app.use(cors(corsOptions));
 
+
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
@@ -46,12 +47,16 @@ app.post("/member", (req, res) => {
   var password = req.body.password;
   var passwordcheck = req.body.passwordcheck;
   var name = req.body.name;
-  var email = req.body.email;
+  var email1 = req.body.email1;
+  var email2 = req.body.email2;
   var address = req.body.address;
-  var phone = req.body.phone;
+  var phone1 = req.body.phone1;
+  var phone2 = req.body.phone2;
+  var phone3 = req.body.phone3;
   
-  const sqlQuery = "insert into member values (?,?,?,?,?,?,?);";
-  db.query(sqlQuery, [id, password, passwordcheck, name, email, address, phone], (err, result) => {
+  
+  const sqlQuery = "insert into member values (?,?,?,?,?,?,?,?,?,?);";
+  db.query(sqlQuery, [id, password, passwordcheck, name, email1, email2, address, phone1, phone2, phone3], (err, result) => {
     res.send(result);
   });
 });
@@ -79,15 +84,17 @@ app.get("/count", (req, res) => {
   });
 });
 
-app.post("/insert", (req, res) => {
+
+
+app.post("/insert", (req, res) => {  //이미지 수정
   console.log("/insert", req.body);
   var writer = req.body.writer;
   var title = req.body.title;
   var content = req.body.content;
 
   const sqlQuery =
-    "INSERT INTO BOARD_TBL (BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT) values (?,?,?);";
-  db.query(sqlQuery, [writer, title, content], (err, result) => {
+    "INSERT INTO BOARD_TBL (BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT) values (?,?,?,?);";  //이미지 수정
+  db.query(sqlQuery, [writer, title, content, req.file.filename], (err, result) => {
     res.send(result);
   });
 });
@@ -97,7 +104,7 @@ app.post("/detail", (req, res) => {
   var num = parseInt(req.body.num);
 
   const sqlQuery =
-    "SELECT BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, DATE_FORMAT(BOARD_DATE, '%Y-%m-%d') AS BOARD_DATE FROM BOARD_TBL where BOARD_NUM = ?;";
+    "SELECT BOARD_NUM, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, DATE_FORMAT(BOARD_DATE, '%Y-%m-%d') AS BOARD_DATE, FROM BOARD_TBL where BOARD_NUM = ?;"; //이미지수정
   db.query(sqlQuery, [num], (err, result) => {
     res.send(result);
   });
