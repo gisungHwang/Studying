@@ -43,7 +43,6 @@ const BoardWrite = ({ handlelist }) => {
       }
     }
     
-
     axios
       .post('http://localhost:8008/miniinsert', {
         comment_name: nameRef.current.value,

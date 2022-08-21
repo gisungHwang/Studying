@@ -8,10 +8,10 @@ const BoardArticle = ({
   handleupdateform
 }) => {
   const handleDelete = (e) => {
-      console.log('handleDelete(commnet_num) : ', e.target.id);
+      console.log('handleDelete(comment_num) : ', e.target.id);
       axios
         .post('http://localhost:8008/minidelete', {
-          comment_name: e.target.id
+          comment_num: e.target.id
         })
         .then(() => {
           handlelist();
@@ -48,7 +48,7 @@ const BoardArticle = ({
         <input
           type='button'
           value='삭제'
-          id={article.comment_name}
+          id={article.comment_num}
           onClick={handleDelete}
         />
       </td>

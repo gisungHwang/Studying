@@ -1,0 +1,18 @@
+.loadingform {
+  position: relative;
+  margin: 0 auto;
+  border: solid 3px;
+  border-radius: 20px;
+  width: 385px;
+  height: 803px;
+  background-color: #fff3b5;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.loadingicon {
+  position: absolute;
+  left: 92px;
+  top: 309px;
+
+}

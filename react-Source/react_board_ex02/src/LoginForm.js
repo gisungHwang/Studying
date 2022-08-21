@@ -9,16 +9,16 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (idRef.current.value === "" || idRef.current.value === undefined) {
-      alert("아이디를 입력하세요!!!");
-      idRef.current.focus();
-      return false;
-    }
-    if (passwordRef.current.value === "" || passwordRef.current.value === undefined) {
-      alert("패스워드를 입력하세요!!!");
-      passwordRef.current.focus();
-      return false;
-    }
+    // if (idRef.current.value === "" || idRef.current.value === undefined) {
+    //   alert("아이디를 입력하세요!!!");
+    //   idRef.current.focus();
+    //   return false;
+    // }
+    // if (passwordRef.current.value === "" || passwordRef.current.value === undefined) {
+    //   alert("패스워드를 입력하세요!!!");
+    //   passwordRef.current.focus();
+    //   return false;
+    // }
 
     console.log(
       "LoginForm:window.sessionStorage(login_id) =>",
@@ -62,6 +62,7 @@ const LoginForm = () => {
                 size="20"
                 ref={idRef}
                 placeholder="아이디를 입력하세요"
+                required
               ></input>
             </td>
           </tr>
@@ -74,6 +75,7 @@ const LoginForm = () => {
                 size="20"
                 ref={passwordRef}
                 placeholder="패스워드를 입력하세요"
+                required
               ></input>
             </td>
           </tr>

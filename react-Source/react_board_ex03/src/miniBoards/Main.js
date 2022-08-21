@@ -15,7 +15,7 @@ function Main() {
   const navigate = useNavigate();
 
   const [article, setArticle] = useState({
-    // comment_num:'',
+    comment_num:0,
     comment_name: '',
     comment_content: '',
     comment_price: ''
@@ -51,7 +51,7 @@ function Main() {
   async function getList() {
     // alert('getList(actionMode) : ' + actionMode.mode);
     await axios
-      .get('http://localhost:8008/count', {})
+      .get('http://localhost:8008/minicount', {})
       // get : url의 데이터 전달 방식을 지정한 것
       // (url에 요청 정보가 노출되는 위험이 있음)
       .then((res) => {
@@ -111,6 +111,7 @@ function Main() {
         if (res.data.length > 0) {
           setArticle({
             ...article,
+            comment_num: data[0].comment_num,
             comment_name: data[0].comment_name,
             comment_content: data[0].comment_content,
             comment_price: data[0].comment_price,
@@ -131,17 +132,18 @@ function Main() {
   const handleUpdateForm = (e) => {
     // alert('handleUpdateForm(actionMode) : ' + actionMode.mode + ', ' + e.target.id);
     axios
-      .post('http://localhost:8008/detail', { num: e.target.id })
+      .post('http://localhost:8008/minidetail', { num: e.target.id })
       .then((res) => {
         const { data } = res;
+        console.log('res:', res);
         console.log('updateForm : ', data);
         if (res.data.length > 0) {
           setArticle({
             ...article,
             // comment_num : data[0].comment_num,
-            comment_name: data[0].comment_name,
-            comment_content: data[0].comment_content,
-            comment_price: data[0].comment_price
+            comment_name: data[0].COMMENT_NAME,
+            comment_content: data[0].COMMENT_CONTENT,
+            comment_price: data[0].COMMENT_PRICE
           });
 
           setActionMode({

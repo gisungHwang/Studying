@@ -27,7 +27,7 @@ function Main() {
   const [pageLink, setPageLink] = useState([]);
 
   var page_num = 1;
-  const page_size = 3;
+  const page_size = 5;
   var page_count = 1;
   var article_count = 0;
 

@@ -39,7 +39,7 @@ const BoardList = ({
               <th width='100'>주문자</th>
               <th width='150'>주문내역</th>
               <th width='100'>가격</th>
-              <th width='100'>수정 / 삭제</th>
+              <th width='100'>삭제</th>
             </tr>
             <tr>
               <input
@@ -61,7 +61,7 @@ const BoardList = ({
               <th width='100'>주문자</th>
               <th width='150'>주문내역</th>
               <th width='100'>가격</th>
-              <th width='100'>수정 / 삭제</th>
+              <th width='100'>삭제</th>
             </tr>
           </thead>
           <tbody>
@@ -70,7 +70,7 @@ const BoardList = ({
                 <BoardArticle
                   actionmode={actionmode}
                   article={article}
-                  key={article.comment_num} //물어보기
+                  key={article.comment_name} //물어보기
                   handlelist={handlelist}
                   handledetail={handledetail}
                   handleupdateform={handleupdateform}
