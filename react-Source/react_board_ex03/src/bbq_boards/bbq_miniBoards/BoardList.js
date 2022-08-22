@@ -10,7 +10,7 @@ const BoardList = ({
   handledetail,
   handleupdateform,
   handlepage,
-  pagelink
+  pagelink 
 }) => {
 
   const navigate = useNavigate();

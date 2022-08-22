@@ -80,7 +80,7 @@ const BoardArticle = ({
           onClick={handleupdateform}
         />
         <input
-          type='button'
+          type='button' 
           value='삭제'
           id={article.comment_name}
           onClick={handleDelete}

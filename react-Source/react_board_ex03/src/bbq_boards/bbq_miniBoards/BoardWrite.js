@@ -156,7 +156,7 @@ const BoardWrite = ({ handlelist, number }) => {
             </tr>
             <tr>
               <td colSpan='2' align='center'>
-                <input
+                <input 
                   type='button'
                   value='글쓰기'
                   onClick={handleInsert}

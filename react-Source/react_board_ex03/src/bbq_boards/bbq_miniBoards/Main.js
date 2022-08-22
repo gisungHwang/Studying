@@ -55,7 +55,7 @@ function Main({
     // alert('getList(actionMode) : ' + actionMode.mode);
     await axios
       .post('http://localhost:8008/minicount', { number: number })
-      // get : url의 데이터 전달 방식을 지정한 것
+      // get : url의 데이터 전달 방식을 지정한 것 
       // (url에 요청 정보가 노출되는 위험이 있음)
       .then((res) => {
         const { data } = res;

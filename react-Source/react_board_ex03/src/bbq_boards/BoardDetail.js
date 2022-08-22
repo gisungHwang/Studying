@@ -14,7 +14,7 @@ const BoardDetail = ({ article, handlelist }) => {
             <tr>
               <td width='100px'>글번호</td>
               <td align='left' width='600px'>
-                {article.board_num}
+                {article.board_num} 
               </td>
             </tr>
             <tr>

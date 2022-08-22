@@ -291,7 +291,7 @@ app.post('/miniinsert', (req, res) => {
   var comment_boardNum = req.body.comment_boardNum;
   var comment_userId = req.body.comment_userId;
 
-  // const sqlQuery_sel = 
+  // const sqlQuery_sel =  
   //   'SELECT board_num FROM board_tbl';
 
   const sqlQuery =

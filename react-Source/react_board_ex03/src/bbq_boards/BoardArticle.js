@@ -18,7 +18,7 @@ const BoardArticle = ({
           num: e.target.id
         })
         .then(() => {
-          handlelist();
+          handlelist(); 
         })
         .catch((e) => {
           console.error(e);

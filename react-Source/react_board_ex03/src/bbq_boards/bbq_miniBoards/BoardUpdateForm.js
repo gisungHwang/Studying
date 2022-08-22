@@ -13,7 +13,7 @@ const BoardUpdateForm = ({ article, setarticle, handleupdate }) => {
     setarticle({
       ...article,
       [e.target.name]: e.target.value
-    });
+    }); 
   }
 
   // const onChange = (e) => {

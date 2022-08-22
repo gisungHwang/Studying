@@ -12,7 +12,7 @@ const BoardDetail = ({ article, handlelist }) => {
               <td width='100px'>글번호</td>
               <td align='left' width='600px'>
                 {article.board_num}
-              </td>
+              </td> 
             </tr>
             <tr>
               <td width='100px'>제목</td>
