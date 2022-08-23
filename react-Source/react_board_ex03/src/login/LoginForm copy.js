@@ -29,7 +29,7 @@ const LoginForm = () => {
     axios
       .post('http://localhost:8008/login', {
         user_id: idRef.current.value,
-        user_pw: pwRef.current.value
+        // user_pw: pwRef.current.value
       })
       .then((res) => {
         console.log('handleLogin : ', res.data[0]);
@@ -37,7 +37,7 @@ const LoginForm = () => {
           window.sessionStorage.setItem('id', idRef.current.value);
           navigate('/main');
         } else {
-          alert('등록된 회원이 아닙니다.')
+          alert('아이디와 비밀번호를 확인해주세요.')
           navigate('/');
         }
       })

@@ -120,7 +120,7 @@ const BoardWrite = ({ handlelist }) => {
                   placeholder='픽업 장소를 입력하세요.'
                 />
               </td>
-            </tr>
+            </tr> 
             <tr>
               <td colSpan='2' align='center'>
                 <Link to='/boardlisthosik?hosik'>

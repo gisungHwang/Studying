@@ -37,7 +37,7 @@ const StoreLoginForm = () => {
           window.sessionStorage.setItem('id', idRef.current.value);
           navigate('/storeboard');
         } else {
-          alert('등록된 회원이 아닙니다.')
+          alert('아이디와 비밀번호를 확인해주세요.')
           navigate('/storelogin');
         }
       })
