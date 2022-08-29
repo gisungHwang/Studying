@@ -39,6 +39,7 @@ const db = mysql.createPool({
 const multer = require("multer"); //파일 업로드
 const path = require("path"); //경로
 const fs = require("fs"); //파일다룰 수 있는 패키지
+const { parse } = require('path');
 
 try {
   //업로드 폴더가 존재하는지 확인하고 없으면 업로드 폴더를 만든다.
@@ -57,7 +58,7 @@ const upload = multer({
     filename(req, file, done) {
       //파일 이름을 어떻게 설정할 것인가 오리지날 파일 이름을 쓰고 싶으면 그냥 저장하고, 같은 이름이 있으면 확장자를 제외한 이름만 추출하고 현재 시간을 가져오고 다시 확장자를 붙여준다.
       const ext = path.extname(file.originalname);
-      done(null, path.basename(file.originalname, ext));
+      done(null, path.basename(file.originalname, ext) + ext);
     },
   }),
   limits: { fileSize: 10 * 1024 * 1024 },
@@ -119,14 +120,15 @@ app.post('/storemember', (req, res) => {
   var pname = req.body.store_pname;
   var phone = req.body.store_phone;
   var category = req.body.store_category;
-  var maxDeliveryTime = req.body.store_maxDeliveryTime;
+  var address = req.body.store_address;
   var operationHour = req.body.store_operationHour;
   var closedDay = req.body.store_closedDay;
   var deliveryFee = req.body.store_deliveryFee;
 
   const sqlQuery = 'INSERT INTO storeinfo_tbl VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
-  db.query(sqlQuery, [id, pw, name, pname, phone, category, maxDeliveryTime, operationHour, closedDay, deliveryFee], (err, result) => {
+  db.query(sqlQuery, [id, pw, name, pname, phone, category, address, operationHour, closedDay, deliveryFee], (err, result) => {
     res.send(result);
+    console.error(err)
   });
 });
 
@@ -136,7 +138,7 @@ app.post('/list', (req, res) => {
 
   var page_num = parseInt(req.body.page_num);
   var page_size = parseInt(req.body.page_size);
-  var query_m = req.body.query_m;
+  var store_id = req.body.store_id;
 
   console.log(
     'List(page_num, page_size, article_count)',
@@ -155,8 +157,42 @@ app.post('/list', (req, res) => {
   );
 
   const sqlQuery =
-    'SELECT BOARD_NUM, BOARD_TITLE, BOARD_WRITER, BOARD_LOCATION, DATE_FORMAT(BOARD_DATE, "%y-%m-%d") AS BOARD_DATE FROM board_tbl WHERE board_store = ? ORDER BY BOARD_NUM DESC LIMIT ?, ?;';
-  db.query(sqlQuery, [query_m, start_limit, page_size], (err, result) => {
+    'SELECT BOARD_NUM, BOARD_TITLE, BOARD_WRITER, BOARD_LOCATION, DATE_FORMAT(BOARD_DATE, "%y-%m-%d") AS BOARD_DATE, BOARD_TIME FROM board_tbl WHERE board_storeId = ? ORDER BY BOARD_NUM DESC LIMIT ?, ?;';
+  db.query(sqlQuery, [store_id, start_limit, page_size], (err, result) => {
+    res.send(result);
+    // select를 사용해서 가져올 결과물을 전달함 (객체 구조)
+    // 여기서 result는 검색한 내용이 담겨져 있음
+  });
+});
+// DB 테이블 가져오기
+
+app.post('/storelist', (req, res) => {
+  // axios에서 get 방식으로 요청한 정보 중에 /list에 대한 정보를 서버에 전송
+  console.log('List');
+
+  var page_num = parseInt(req.body.page_num);
+  var page_size = parseInt(req.body.page_size);
+  var url = req.body.url;
+
+  console.log(
+    'List(page_num, page_size, article_count)',
+    page_num,
+    ', ',
+    page_size
+  );
+
+  const start_limit = (page_num - 1) * (page_size);
+
+  console.log(
+    'List(start_limit, page_size)',
+    start_limit,
+    ', ',
+    page_size
+  );
+
+  const sqlQuery =
+    'SELECT store_id, store_name, store_phone, store_deliveryFee, store_address FROM storeInfo_tbl WHERE store_category = ? LIMIT ?, ?;';
+  db.query(sqlQuery, [url, start_limit, page_size], (err, result) => {
     res.send(result);
     // select를 사용해서 가져올 결과물을 전달함 (객체 구조)
     // 여기서 result는 검색한 내용이 담겨져 있음
@@ -207,6 +243,9 @@ app.post('/menulist', (req, res) => {
 
   var page_num = parseInt(req.body.page_num);
   var page_size = parseInt(req.body.page_size);
+  var menu_storeId = req.body.menu_storeId;
+
+  console.log('----------------', menu_storeId);
 
   console.log(
     'List(page_num, page_size, article_count)',
@@ -225,8 +264,8 @@ app.post('/menulist', (req, res) => {
   );
 
   const sqlQuery =
-    'SELECT menu_pictureUrl, menu_name, menu_price FROM menu_tbl LIMIT ?, ?;';
-  db.query(sqlQuery, [start_limit, page_size], (err, result) => {
+    'SELECT menu_storeId, menu_pictureUrl, menu_name, menu_price FROM menu_tbl WHERE menu_storeId = ? LIMIT ?, ?;';
+  db.query(sqlQuery, [menu_storeId, start_limit, page_size], (err, result) => {
     res.send(result);
     // select를 사용해서 가져올 결과물을 전달함 (객체 구조)
     // 여기서 result는 검색한 내용이 담겨져 있음
@@ -234,13 +273,85 @@ app.post('/menulist', (req, res) => {
 });
 // DB 테이블 가져오기
 
+app.post('/usermenulist', (req, res) => {
+  // axios에서 get 방식으로 요청한 정보 중에 /list에 대한 정보를 서버에 전송
+  console.log('List');
+
+  var page_num = parseInt(req.body.page_num);
+  var page_size = parseInt(req.body.page_size);
+  var store_id = req.body.store_id;
+
+  console.log('---------asdasd-------', store_id);
+
+  console.log(
+    'List(page_num, page_size, article_count)',
+    page_num,
+    ', ',
+    page_size
+  );
+
+  const start_limit = (page_num - 1) * (page_size);
+
+  console.log(
+    'List(start_limit, page_size)',
+    start_limit,
+    ', ',
+    page_size
+  );
+
+  const sqlQuery =
+    'SELECT menu_storeId, menu_pictureUrl, menu_name, menu_price FROM menu_tbl WHERE menu_storeId = ? LIMIT ?, ?;';
+  db.query(sqlQuery, [store_id, start_limit, page_size], (err, result) => {
+    res.send(result);
+    // select를 사용해서 가져올 결과물을 전달함 (객체 구조)
+    // 여기서 result는 검색한 내용이 담겨져 있음
+  });
+});
+// DB 테이블 가져오기
+
+app.post('/orderlist', (req, res) => {
+  // axios에서 get 방식으로 요청한 정보 중에 /list에 대한 정보를 서버에 전송
+  console.log('List');
+
+  var page_num = parseInt(req.body.page_num);
+  var page_size = parseInt(req.body.page_size);
+  var store_id = req.body.store_id;
+  var board_num = req.body.board_num;
+  var user_id = req.body.user_id;
+
+  console.log('---------asdasd-------', store_id);
+
+  console.log(
+    'List(page_num, page_size, article_count)',
+    page_num,
+    ', ',
+    page_size
+  );
+
+  const start_limit = (page_num - 1) * (page_size);
+
+  console.log(
+    'List(start_limit, page_size)',
+    start_limit,
+    ', ',
+    page_size
+  );
+
+  const sqlQuery =
+    'SELECT order_menuName, order_price, order_userId, order_id FROM order_tbl WHERE (order_boardNum = ? && order_userId = ?) LIMIT ?, ?;';
+  db.query(sqlQuery, [board_num, user_id, start_limit, page_size], (err, result) => {
+    res.send(result);
+    // select를 사용해서 가져올 결과물을 전달함 (객체 구조)
+    // 여기서 result는 검색한 내용이 담겨져 있음
+  });
+});
+
 app.post('/count', (req, res) => {
   console.log('Count');
-  var query_m = req.body.query_m;
-  console.log(query_m);
+  var store_id = req.body.store_id;
 
-  const sqlQuery = 'SELECT COUNT(*) AS COUNT FROM board_tbl WHERE board_store = ?;';
-  db.query(sqlQuery, [query_m], (err, result) => {
+  const sqlQuery = 'SELECT COUNT(*) AS COUNT FROM board_tbl WHERE board_storeId = ?;';
+  db.query(sqlQuery, [store_id], (err, result) => {
     res.send(result);
   });
 });
@@ -256,10 +367,46 @@ app.post('/minicount', (req, res) => {
   });
 });
 
-app.get('/menucount', (req, res) => {
+app.post('/storecount', (req, res) => {
   console.log('Count');
-  const sqlQuery = 'SELECT COUNT(*) AS COUNT FROM menu_tbl;';
-  db.query(sqlQuery, (err, result) => {
+  var url = req.body.url;
+  // var number = req.body.number;
+  // console.log(number);
+
+  const sqlQuery = 'SELECT COUNT(*) AS COUNT FROM storeInfo_tbl WHERE store_category = ?;';
+  db.query(sqlQuery, [url], (err, result) => {
+    res.send(result);
+  });
+});
+
+app.post('/menucount', (req, res) => {
+  console.log('Count');
+  var menu_storeId = req.body.menu_storeId;
+  console.log('asdddddddadasdasd', menu_storeId);
+
+  const sqlQuery = 'SELECT COUNT(*) AS COUNT FROM menu_tbl WHERE menu_storeId = ?;';
+  db.query(sqlQuery, [menu_storeId], (err, result) => {
+    res.send(result);
+  });
+});
+
+app.post('/usermenucount', (req, res) => {
+  console.log('Count');
+  var store_id = req.body.store_id;
+
+  const sqlQuery = 'SELECT COUNT(*) AS COUNT FROM menu_tbl WHERE menu_storeId = ?;';
+  db.query(sqlQuery, [store_id], (err, result) => {
+    res.send(result);
+  });
+});
+
+app.post('/ordercount', (req, res) => {
+  console.log('Count');
+  var board_num = req.body.board_num;
+  var user_id = req.body.user_id;
+
+  const sqlQuery = 'SELECT COUNT(*) AS COUNT FROM order_tbl WHERE (order_boardNum = ? && order_userId = ?);';
+  db.query(sqlQuery, [board_num, user_id], (err, result) => {
     res.send(result);
   });
 });
@@ -270,12 +417,15 @@ app.post('/insert', (req, res) => {
   var writer = req.body.writer;
   var content = req.body.content;
   var location = req.body.location;
-  var query_w = req.body.query_w;
+  var storeId = req.body.storeId;
+  var time = req.body.time;
+
+  console.log(storeId);
 
   const sqlQuery =
-    'INSERT INTO board_tbl (BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_LOCATION, BOARD_STORE) VALUES (?, ?, ?, ?, ?);';
+    'INSERT INTO board_tbl (BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_LOCATION, BOARD_STOREID, BOARD_TIME) VALUES (?, ?, ?, ?, ?, ?);';
   // (?, ?, ?) : [writer, title, content]를 파라미터 값으로 받아온다는 의미
-  db.query(sqlQuery, [writer, title, content, location, query_w], (err, result) => {
+  db.query(sqlQuery, [writer, title, content, location, storeId, time], (err, result) => {
     // res.send(result);
     res.send('확인');
     // 여기서 result는 아무 내용이 담겨있지 않음
@@ -338,7 +488,7 @@ app.post('/detail', (req, res) => {
   var num = parseInt(req.body.num);
 
   const sqlQuery =
-    'SELECT BOARD_NUM, BOARD_TITLE, BOARD_WRITER, BOARD_CONTENT, BOARD_LOCATION, DATE_FORMAT(BOARD_DATE, "%y-%m-%d") AS BOARD_DATE FROM board_tbl WHERE BOARD_NUM = ?;';
+    'SELECT BOARD_NUM, BOARD_TITLE, BOARD_WRITER, BOARD_CONTENT, BOARD_LOCATION, DATE_FORMAT(BOARD_DATE, "%y-%m-%d") AS BOARD_DATE, BOARD_TIME FROM board_tbl WHERE BOARD_NUM = ?;';
   db.query(sqlQuery, [num], (err, result) => {
     res.send(result);
   });
@@ -443,6 +593,89 @@ app.post('/menudelete', (req, res) => {
     res.send(result);
   });
 });
+
+app.post('/orderdelete', (req, res) => {
+  const order_id = req.body.num;
+  console.log('/orderdelete(id) = ', order_id);
+
+  const sqlQuery = 'DELETE FROM order_tbl WHERE order_id = ?;';
+  db.query(sqlQuery, [order_id], (err, result) => {
+    // console.log(err);
+    res.send(result);
+  });
+});
+
+app.post('/pay', (req, res) => {
+  console.log('/pay', req.body);
+  var order_menuName = req.body.order_menuName;
+  var order_boardNum = req.body.order_boardNum;
+  var order_userId = req.body.order_userId;
+  var order_price = req.body.order_price;
+
+  console.log('브레이브사운드', order_menuName, order_boardNum, order_userId, order_price);
+
+  const sqlQuery =
+    'INSERT INTO order_tbl (order_menuName, order_boardNum, order_userId, order_price) VALUES (?, ?, ?, ?);';
+  // (?, ?, ?) : [writer, title, content]를 파라미터 값으로 받아온다는 의미
+  db.query(sqlQuery, [order_menuName, order_boardNum, order_userId, order_price], (err, result) => {
+    // res.send(result);
+    res.send('확인');
+    // 여기서 result는 아무 내용이 담겨있지 않음
+  });
+});
+
+app.post('/deliveryfee', (req, res) => {
+  // axios에서 get 방식으로 요청한 정보 중에 /list에 대한 정보를 서버에 전송
+  console.log('List');
+
+  var store_id = req.body.store_id;
+
+  console.log('------------------', store_id);
+
+  const sqlQuery =
+    'SELECT store_deliveryFee FROM storeInfo_tbl WHERE store_id = ?;';
+  db.query(sqlQuery, [store_id], (err, result) => {
+    res.send(result);
+    // select를 사용해서 가져올 결과물을 전달함 (객체 구조)
+    // 여기서 result는 검색한 내용이 담겨져 있음
+  });
+});
+
+app.post('/totalprice', (req, res) => {
+  // axios에서 get 방식으로 요청한 정보 중에 /list에 대한 정보를 서버에 전송
+  console.log('List');
+
+  var order_userId = req.body.order_userId;
+  var order_boardNum = req.body.order_boardNum;
+
+  console.log('------------------', order_userId, order_boardNum);
+
+  const sqlQuery =
+    'SELECT SUM(order_price) AS totalPrice FROM order_tbl WHERE (order_boardNum = ? && order_userid = ?);';
+  db.query(sqlQuery, [order_boardNum, order_userId], (err, result) => {
+    res.send(result);
+    // select를 사용해서 가져올 결과물을 전달함 (객체 구조)
+    // 여기서 result는 검색한 내용이 담겨져 있음
+  });
+});
+
+// app.post('/feedivide', (req, res) => {
+//   // axios에서 get 방식으로 요청한 정보 중에 /list에 대한 정보를 서버에 전송
+//   console.log('List');
+
+//   var order_userId = req.body.order_userId;
+//   var order_boardNum = req.body.order_boardNum;
+
+//   console.log('------------------asasdaaasad', order_userId, order_boardNum);
+
+//   const sqlQuery =
+//     'SELECT SUM(order_price) AS totalPrice FROM order_tbl WHERE (order_boardNum = ? && order_userid = ?);';
+//   db.query(sqlQuery, [order_boardNum, order_userId], (err, result) => {
+//     res.send(result);
+//     // select를 사용해서 가져올 결과물을 전달함 (객체 구조)
+//     // 여기서 result는 검색한 내용이 담겨져 있음
+//   });
+// });
 
 app.listen(PORT, () => {
   console.log(`Running on PORT ${PORT}`)

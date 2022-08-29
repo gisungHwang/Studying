@@ -1,0 +1,113 @@
+.form {
+  position: relative;
+  margin: 0 auto;
+  border: solid 3px;
+  border-radius: 20px;
+  width: 385px;
+  height: 803px;
+  text-align: center;
+  background:whitesmoke;
+  margin-top: 70px;
+}
+
+.Link {
+  text-decoration-line: none;
+}
+
+form .logo {
+  width: 226px;
+  height: 64px;
+  padding-top: 100px;
+  padding-bottom: 30px;
+  font-weight: 600;
+  font-size: 35px;
+  text-align: center;
+  color: #000000;
+  margin: 0 auto;
+  position: static;
+}
+
+.ID {
+  /* position: absolute; */
+  width: 308px;
+  height: 50px;
+  /* left: 33px;
+  top: 220px; */
+  /* background: #f0ebeb; */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-size: 17px;
+  padding-left: 10px;
+  border: none;
+}
+
+.password {
+  /* position: absolute; */
+    width: 308px;
+    height: 50px;
+    /* left: 33px;
+    top: 220px; */
+    /* background: #f0ebeb; */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-size: 17px;
+    padding-left: 10px;
+    border: none;
+}
+
+.signup {
+  /* position: absolute; */
+  display: block;
+  cursor: pointer;
+  /* width: 188px; */
+  height: 26px;
+  /* left: 93px;
+  top: 399px; */
+  border: none;
+  margin: 0 auto;
+  background: transparent;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 16px;
+  text-align: center;
+  text-decoration: underline;
+  /* color: #424242; */
+  
+}
+
+.gostore {
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 16px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.login {
+  /* position: absolute; */
+  width: 167px;
+  height: 48px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  /* left: 104px; */
+  /* top: 602px; */
+  background: #ffcd19;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color:whitesmoke;
+  border: none;
+  color: #292826;
+}
+
+/* #ffcd19 */

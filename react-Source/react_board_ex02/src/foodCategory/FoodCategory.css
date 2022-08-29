@@ -1,0 +1,119 @@
+.FoodCategory {
+  position: relative;
+  margin: 0 auto;
+  border: solid 3px;
+  border-radius: 20px;
+  width: 385px;
+  height: 803px;
+  background: #FBEAEB;
+}
+
+p {
+  position: absolute;
+  width: 355px;
+  height: 58px;
+  left: 90px;
+  top: 0px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 50px;
+}
+
+img:hover {
+  scale: 0.95;
+  transition: 0.3s;
+}
+
+img {
+  transition: 0.3s;
+}
+
+.imcafe {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 247px;
+  top: 494px;
+  z-index: 1;
+}
+
+.imporkfoot {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 83px;
+  top: 345px;
+  box-sizing: border-box;
+}
+
+.impizza {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 209px;
+  top: 273px;
+  box-sizing: border-box;
+}
+
+.imchina {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 40px;
+  top: 418px;
+  box-sizing: border-box;
+}
+
+.imjapan {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 207px;
+  top: 420px;
+  box-sizing: border-box;
+}
+
+.imkfood {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 126px;
+  top: 273px;
+  box-sizing: border-box;
+}
+
+.imchicken {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 85px;
+  top: 200px;
+  box-sizing: border-box;
+}
+
+.imdessert {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 124px;
+  top: 563px;
+  box-sizing: border-box;
+}
+
+.imburger {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 167px;
+  top: 346px;
+  box-sizing: border-box;
+}
+
+.imsandwich {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 83px;
+  top: 490px;
+  box-sizing: border-box;
+}

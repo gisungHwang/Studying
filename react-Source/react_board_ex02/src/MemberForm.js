@@ -1,196 +1,171 @@
-import React from 'react';
-import {useRef} from 'react';
-import {useNavigate} from "react-router-dom";
+import React from "react";
+import { useRef } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const MemberForm = () => {
-    const idRef = useRef();
-    const passwordRef = useRef();
-    const passwordcheckRef = useRef();
-    const nameRef = useRef();
-    const emailRef = useRef();
-    const addressRef = useRef();
-    const phoneRef = useRef();
+  const idRef = useRef();
+  const pwRef = useRef();
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const addressRef = useRef();
+  const phoneRef = useRef();
 
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const handleMember = () => {
+    if (idRef.current.value === "" || idRef.current.value === undefined) {
+      alert("아이디를 입력해주세요.");
+      idRef.current.focus();
+      return false;
+    }
+    if (pwRef.current.value === "" || pwRef.current.value === undefined) {
+      alert("비밀번호를 입력해주세요.");
+      pwRef.current.focus();
+      return false;
+    }
+    if (nameRef.current.value === "" || nameRef.current.value === undefined) {
+      alert("이름을 입력해주세요.");
+      nameRef.current.focus();
+      return false;
+    }
+    if (emailRef.current.value === "" || emailRef.current.value === undefined) {
+      alert("이메일을 입력해주세요.");
+      emailRef.current.focus();
+      return false;
+    }
+    if (
+      addressRef.current.value === "" ||
+      addressRef.current.value === undefined
+    ) {
+      alert("주소를 입력해주세요.");
+      addressRef.current.focus();
+      return false;
+    }
+    if (phoneRef.current.value === "" || phoneRef.current.value === undefined) {
+      alert("전화번호를 입력해주세요.");
+      phoneRef.current.focus();
+      return false;
+    }
 
-    const handleMember = () => {
-        if (idRef.current.value === "" || idRef.current.value === undefined) {
-            alert("아이디를 입력하세요!");
-            idRef.current.focus();
-            return false;
+    axios
+      .post("http://localhost:8008/member", {
+        user_id: idRef.current.value,
+        user_pw: pwRef.current.value,
+        user_name: nameRef.current.value,
+        user_email: emailRef.current.value,
+        user_address: addressRef.current.value,
+        user_phone: phoneRef.current.value,
+      })
+      .then((res) => {
+        console.log("handleMember : ", res);
+        if (res.data.affectedRows === 1) {
+          alert("회원 등록에 성공했습니다.");
+        } else {
+          alert("회원 등록에 실패했습니다.");
         }
-        if (passwordRef.current.value === "" || passwordRef.current.value === undefined) {
-            alert("패스워드를 입력하세요!");
-            passwordRef.current.focus();
-            return false;
-        }
-        if (passwordcheckRef.current.value === "" || passwordcheckRef.current.value !== passwordRef.current.value || passwordcheckRef.current.value === undefined) {
-            alert("패스워드를 다시 확인해주세요!");
-            passwordcheckRef.current.focus();
-            return false;
-        }
-        if (nameRef.current.value === "" || nameRef.current.value === undefined) {
-            alert("이름을 확인하세요!");
-            nameRef.current.focus();
-            return false;
-        }
-        if (emailRef.current.value === "" || emailRef.current.value === undefined) {
-            alert("이메일을 확인하세요!");
-            emailRef.current.focus();
-            return false;
-        }
-        if (addressRef.current.value === "" || addressRef.current.value === undefined) {
-            alert("주소를 입력하세요!");
-            addressRef.current.focus();
-            return false;
-        }
-        if (phoneRef.current.value === "" || phoneRef.current.value === undefined) {
-            alert("휴대폰 번호를 입력하세요!");
-            phoneRef.current.focus();
-            return false;
-        }
-
-    
-axios
-    .post("http://localhost:8008/member", {
-        id: idRef.current.value,
-        password: passwordRef.current.value,
-        passwordcheck: passwordcheckRef.current.value,
-        name: nameRef.current.value,
-        email: emailRef.current.value,
-        address: addressRef.current.value,
-        phone: phoneRef.current.value,
-    })
-
-    .then((res) => {
-        console.log("handleMenber =>", res);
-        if(res.data.affectedRows === 1) alert("회원가입 성공!!!");
-            else alert("회원가입 실패!!!");
-        navigate("/");  //로그인화면으로 이동
-    })
-    .catch((e) => {
+        navigate("/");
+      })
+      .catch((e) => {
         console.error(e);
-    });
-};
+      });
+  };
 
-return (
+  return (
     <div>
-    <p></p>  
-    
-    <form>
-    <table border="1" width="350px" align="center">
-        <tr>
-            <td width="100px">아이디</td>
-            <td align="left" width="200px">
-                <input
-                type="text"
-                name="id"
-                size="23"
-                defaultValue=""
-                ref={idRef}
-                placeholder="아이디를 입력하세요"
-                ></input>
-            </td>
-            </tr>
-        <tr>
-            <td width="100px">패스워드</td>
-            <td align="left" width="200px">
-                <input
-                type="password"
-                name="password"
-                size="23"
-                defaultValue=""
-                ref={passwordRef}
-                placeholder="패스워드를 입력하세요"
-                ></input>
-            </td>
-            </tr>
-
+      <br />
+      <h1 align="center">개인 회원가입</h1>
+      <form>
+        <table border="1" width="500px" align="center">
+          <thead>
             <tr>
-            <td width="100px">패스워드확인</td>
-            <td align="left" width="200px">
+              <td width="100px">아이디</td>
+              <td align="left" width="200px">
                 <input
-                type="password"
-                name="passwordcheck"
-                size="23"
-                defaultValue=""
-                ref={passwordcheckRef}
-                placeholder="패스워드를 다시 확인해주세요"
-                ></input>
-            </td>
+                  type="text"
+                  name="id"
+                  size="20"
+                  defaultValue=""
+                  ref={idRef}
+                  placeholder="아이디를 입력해주세요."
+                />
+              </td>
             </tr>
-            
             <tr>
-            <td width="100px">이름</td>
-            <td align="left" width="200px">
+              <td width="100px">비밀번호</td>
+              <td align="left" width="200px">
                 <input
-                type="text"
-                name=""
-                size="23"
-                defaultValue=""
-                ref={nameRef}
-                placeholder="이름을 입력하세요"
-                ></input>
-            </td>
+                  type="password"
+                  name="pw"
+                  size="20"
+                  defaultValue=""
+                  ref={pwRef}
+                  placeholder="비밀번호를 입력해주세요."
+                />
+              </td>
             </tr>
-
             <tr>
-            <td width="100px">이메일</td>
-            <td align="left" width="200px">
+              <td width="100px">이름</td>
+              <td align="left" width="200px">
                 <input
-                type="email"
-                name="email"
-                size="23"
-                defaultValue=""
-                ref={emailRef}
-                placeholder="이메일을 입력하세요"
-                ></input>
-            </td>
+                  type="text"
+                  name="name"
+                  size="20"
+                  defaultValue=""
+                  ref={nameRef}
+                  placeholder="이름을 입력해주세요."
+                />
+              </td>
             </tr>
-
             <tr>
-            <td width="100px">주소</td>
-            <td align="left" width="200px">
+              <td width="100px">이메일</td>
+              <td align="left" width="200px">
                 <input
-                type="text"
-                name="address"
-                size="23"
-                defaultValue=""
-                ref={addressRef}
-                placeholder="주소를 입력하세요"
-                ></input>
-            </td>
+                  type="text"
+                  name="email"
+                  size="20"
+                  defaultValue=""
+                  ref={emailRef}
+                  placeholder="aischool@example.com"
+                />
+              </td>
             </tr>
-
             <tr>
-            <td width="100px">휴대폰번호</td>
-            <td align="left" width="200px">
+              <td width="100px">주소</td>
+              <td align="left" width="200px">
                 <input
-                type="tel"
-                name="id"
-                size="2"
-                defaultValue=""
-                ref={phoneRef}
-                placeholder="휴대폰 번호를 입력하세요"
-                ></input>
-            </td>
+                  type="text"
+                  name="address"
+                  size="50"
+                  defaultValue=""
+                  ref={addressRef}
+                  placeholder="주소를 입력해주세요."
+                />
+              </td>
             </tr>
-
             <tr>
-                <td colSpan="2" align="center">
-                    <input
-                    type="button"
-                    value="회원등록"
-                    onClick={handleMember}
-                    ></input>
-                </td>
+              <td width="100px">전화번호</td>
+              <td align="left" width="200px">
+                <input
+                  type="text"
+                  name="phone"
+                  size="20"
+                  defaultValue=""
+                  ref={phoneRef}
+                  placeholder="전화번호를 입력해주세요."
+                />
+              </td>
             </tr>
+            <tr>
+              <td colSpan="2" align="center">
+                <input type="button" value="회원 등록" onClick={handleMember} />
+              </td>
+            </tr>
+          </thead>
         </table>
-        </form>
+      </form>
     </div>
-    );
+  );
 };
 
 export default MemberForm;

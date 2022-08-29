@@ -19,12 +19,12 @@ p {
 }
 
 img:hover {
-  scale: 0.8;
-  transition: 1s;
+  scale: 0.95;
+  transition: 0.3s;
 }
 
 img {
-  transition: 1s;
+  transition: 0.3s;
 }
 
 .imcafe {

@@ -4,22 +4,12 @@ import MemberForm from './login/MemberForm';
 import StoreMemberForm from './login/StoreMemberForm';
 import StoreLoginForm from './login/StoreLoginForm';
 import FoodCategory from './foodCategory/FoodCategory';
-import MenuChicken from "./menuSite/MenuChicken";
-import MenuCafe from "./menuSite/MenuCafe";
-import MenuPorkfood from "./menuSite/MenuPorkfood";
-import MenuPizza from "./menuSite/MenuPizza";
-import MenuBurger from "./menuSite/MenuBurger";
-import MenuChina from "./menuSite/MenuChina";
-import MenuJapan from "./menuSite/MenuJapan";
-import MenuKfood from "./menuSite/MenuKfood";
-import MenuDessert from "./menuSite/MenuDessert";
-import MenuSandwich from "./menuSite/MenuSandwich";
+import Menu from "./menuSite/storeMenu/StoreMain";
 import Loading from './Loading/Loading';
 import StoreMain from './storeBoards/StoreMain';
-import MainHosik from './hosik_boards/Main';
-import BoardWriteHosik from './hosik_boards/BoardWrite';
-import MainBbq from './bbq_boards/Main';
-import BoardWriteBbq from './bbq_boards/BoardWrite';
+import BoardMain from './menuSite/storeMenu/boards/Main';
+import UserMenu from './userMenu/UserStoreMain';
+import PayLoading from './Loading/PayLoading';
 
 function App() {
   return (
@@ -30,21 +20,20 @@ function App() {
       <Route path='/storelogin' element={<StoreLoginForm />} />
       <Route path='/storemember' element={<StoreMemberForm />} />
       <Route path="/main" element={<FoodCategory />} />
-      <Route path="/main/menuchicken" element={<MenuChicken />} />
-      <Route path="/main/menucafe" element={<MenuCafe />} />
-      <Route path="/main/menuporkfood" element={<MenuPorkfood />} />
-      <Route path="/main/menupizza" element={<MenuPizza />} />
-      <Route path="/main/menuchina" element={<MenuChina />} />
-      <Route path="/main/menujapan" element={<MenuJapan />} />
-      <Route path="/main/menukfood" element={<MenuKfood />} />
-      <Route path="/main/menudessert" element={<MenuDessert />} />
-      <Route path="/main/menuburger" element={<MenuBurger />} />
-      <Route path="/main/menusandwich" element={<MenuSandwich />} />
+      <Route path="/main/chicken" element={<Menu />} />
+      <Route path="/main/burger" element={<Menu />} />
+      <Route path="/main/pizza" element={<Menu />} />
+      <Route path="/main/korean" element={<Menu />} />
+      <Route path="/main/sandwitch" element={<Menu />} />
+      <Route path="/main/chinese" element={<Menu />} />
+      <Route path="/main/japanese" element={<Menu />} />
+      <Route path="/main/dessert" element={<Menu />} />
+      <Route path="/main/cafe" element={<Menu />} />
+      <Route path="/main/porkfood" element={<Menu />} />
       <Route path='/storeboard' element={<StoreMain />} />
-      <Route path='/boardlisthosik' element={<MainHosik />} />
-      <Route path='/boardwritehosik' element={<BoardWriteHosik />} />
-      <Route path='/boardlistbbq' element={<MainBbq />} />
-      <Route path='/boardwritebbq' element={<BoardWriteBbq />} />
+      <Route path='/userstoreboard' element={<UserMenu />} />
+      <Route path='/boardmain' element={<BoardMain />} />
+      <Route path='/payloading' element={<PayLoading />} />
     </Routes>
   )
 };
