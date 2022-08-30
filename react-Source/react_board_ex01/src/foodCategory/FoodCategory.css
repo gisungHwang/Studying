@@ -1,0 +1,407 @@
+.FoodCategory {
+  position: relative;
+  margin: 0 auto;
+  border: solid 3px;
+  border-radius: 20px;
+  width: 385px;
+  height: 803px;
+  margin-top: 50px;
+
+  background: whitesmoke;
+  overflow: hidden;
+  font-family: "DO Hyeon";
+}
+
+/* .bee11 {
+  width: 140px;
+  position: absolute;
+  top: 250px;
+  left: 100px;
+  animation-fill-mode: forwards;
+  animation-name: bee11;
+  animation-duration: 5s;
+  animation-delay: 0.5s;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-play-state: initial;
+  animation-timing-function: 0s;
+  animation-fill-mode: both;
+}
+
+@keyframes bee11 {
+  from {
+    margin-left: 300px;
+    width: 1px;
+  }
+  to {
+    margin-left: -650px;
+    width: 400px;
+  } */
+/* } */
+
+/* .FoodCategory1 {
+  animation: fadein 5.5s;
+ 
+} */
+/* @keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+} */
+
+/* .hongbo {
+  position: absolute;
+  width: 355px;
+  height: 70px;
+  left: 25px;
+  top: 40px;
+  font-family: "Roboto";
+  font-weight: 600;
+  font-size: 50px;
+  animation: fadeout 4s;
+  -moz-animation: fadeout 4s;
+  -webkit-animation: fadeout 4s;
+  -o-animation: fadeout 4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+} */
+
+.baedalbee {
+  position: absolute;
+  width: 700px;
+  height: 70px;
+  left: 100px;
+  top: 27px;
+  /* font-family: "Roboto"; */
+  font-weight: 600;
+  font-size: 50px;
+}
+
+/* @keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+} */
+
+/* .baedal {
+  position: absolute;
+  width: 700px;
+  height: 70px;
+  left: 70px;
+  top: 40px;
+  font-family: "Roboto";
+  font-weight: 600;
+  font-size: 50px;
+}
+
+@keyframes baedal {
+  from {
+    margin-left: 400px;
+    width: 700px;
+  }
+  to {
+    margin-left: -400px;
+    width: 700px;
+  }
+}
+
+.bee {
+  position: absolute;
+  width: 355px;
+  height: 70px;
+  left: 200px;
+  top: 40px;
+
+  font-family: "Roboto";
+  font-weight: 600;
+  font-size: 55px;
+  animation-name: bee;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  animation-timing-function: 1s;
+  animation-fill-mode: both;
+}
+@keyframes bee {
+  from {
+    margin-top: -100px;
+    width: 355px;
+  }
+  to {
+    margin-top: 54px;
+    width: 355px;
+  }
+}  */
+
+.category_img:hover {
+  scale: 0.95;
+  transition: 0.3s;
+}
+.category_img {
+  transition: 0.3s;
+}
+
+#imcafe {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 254px;
+  top: 499px;
+  z-index: 1;
+}
+
+/* img.imcafe {
+  animation: rotate_image 3s ease-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+#imporkfoot {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 84px;
+  top: 348px;
+  box-sizing: border-box;
+}
+
+/* img.imporkfoot {
+  animation: rotate_image 1s ease-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+#impizza {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 212px;
+  top: 273px;
+  box-sizing: border-box;
+}
+/* img.impizza {
+  animation: rotate_image 3s ease-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+#imchina {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 41px;
+  top: 422px;
+  box-sizing: border-box;
+}
+/* img.imchina {
+  animation: rotate_image 3s ease-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+#imjapan {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 212px;
+  top: 423px;
+  box-sizing: border-box;
+}
+/* img.imjapan {
+  animation: rotate_image 3s ease-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+#imkfood {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 126px;
+  top: 273px;
+  box-sizing: border-box;
+}
+/* img.imkfood {
+  animation: rotate_image 3s ease-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+#imchicken {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 83px;
+  top: 198px;
+  box-sizing: border-box;
+}
+/* img.imchicken {
+  animation: rotate_image 3s ease-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+/* 
+#imdessert {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 124px;
+  top: 570px;
+  box-sizing: border-box;
+} */
+
+#imdessert {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 125px;
+  top: 570px;
+  box-sizing: border-box;
+}
+/* img.imdessert {
+  animation: rotate_image 1s ease-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+#imburger {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 169px;
+  top: 348px;
+  box-sizing: border-box;
+  font-family: "Roboto";
+  font-weight: 600;
+  font-size: 55px;
+  /* animation-name: imburger;
+  animation-duration: 4s;
+  animation-delay: 0.5s;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  animation-timing-function: 1s;
+  animation-fill-mode: both; */
+}
+
+/* @keyframes imburger {
+  from {
+    margin-top: -500px;
+    width: 355px;
+  }
+  to {
+    margin-top: 0px;
+    width: 355px;
+  }
+} */
+/* img.imburger {
+  animation: rotate_image 3s ease-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+#imsandwich {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 83px;
+  top: 499px;
+  box-sizing: border-box;
+}
+/* img.imsandwich {
+  animation: rotate_image 3s ease-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+/* .summerbee {
+  width: 80px;
+  position: absolute;
+  top: 120px;
+  left: 0px;
+  animation-name: summerbee;
+  animation-duration: 3s;
+  animation-delay: 1s;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-play-state: initial;
+  animation-timing-function: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes summerbee {
+  from {
+    margin-left: 400px;
+    width: 80px;
+  }
+  to {
+    margin-left: -170px;
+    width: 80px;
+  }
+} */

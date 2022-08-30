@@ -1,39 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
-import BoardList from './BoardList';
-import BoardWrite from './BoardWrite';
-import BoardDetail from './BoardDetail';
-import BoardUpdateForm from './BoardUpdateForm';
-import { useState } from "react";
+import { Route, Routes } from 'react-router-dom'
+import LoginForm from './login/LoginForm';
+import MemberForm from './login/MemberForm';
+import StoreMemberForm from './login/StoreMemberForm';
+import StoreLoginForm from './login/StoreLoginForm';
+import FoodCategory from './foodCategory/FoodCategory';
+import Menu from "./menuSite/storeMenu/StoreMain";
+import Loading from './Loading/Loading';
+import StoreMain from './storeBoards/StoreMain';
+import BoardMain from './menuSite/storeMenu/boards/Main';
+import UserMenu from './userMenu/UserStoreMain';
+import PayLoading from './Loading/PayLoading';
 
 function App() {
-  const [actionMode, setActionMode] = useState ({mode: 1}); //0:글쓰기 , 1: 상세보기, 2:글수정
-  if (actionMode.mode === 0) {      //alert("글쓰기")  //===는 타입까지 고려할 경우 사용
-  
   return (
-    <div>
-    <BoardWrite></BoardWrite>
-    <br />
-    <BoardList></BoardList>
-    </div>
-    );
-} else if (actionMode.mode === 1){ //alert("상세보기")
-  return(
-    <div>
-      <BoardDetail></BoardDetail>
-      <br/>
-      <BoardList></BoardList>
-    </div>
-  );
-}else if (actionMode.mode === 2) {  //alert("글 수정")
-  return(
-    <div>
-      <BoardUpdateForm></BoardUpdateForm>
-      <br/>
-      <BoardList></BoardList>
-    </div>
-  );
-}
-}
+    <Routes>
+      <Route path='/' element={<Loading />} />
+      <Route path='/login' element={<LoginForm />} />
+      <Route path='/member' element={<MemberForm />} />
+      <Route path='/storelogin' element={<StoreLoginForm />} />
+      <Route path='/storemember' element={<StoreMemberForm />} />
+      <Route path="/main" element={<FoodCategory />} />
+      <Route path="/main/chicken" element={<Menu />} />
+      <Route path="/main/burger" element={<Menu />} />
+      <Route path="/main/pizza" element={<Menu />} />
+      <Route path="/main/korean" element={<Menu />} />
+      <Route path="/main/sandwitch" element={<Menu />} />
+      <Route path="/main/chinese" element={<Menu />} />
+      <Route path="/main/japanese" element={<Menu />} />
+      <Route path="/main/dessert" element={<Menu />} />
+      <Route path="/main/cafe" element={<Menu />} />
+      <Route path="/main/porkfood" element={<Menu />} />
+      <Route path='/storeboard' element={<StoreMain />} />
+      <Route path='/userstoreboard' element={<UserMenu />} />
+      <Route path='/boardmain' element={<BoardMain />} />
+      <Route path='/payloading' element={<PayLoading />} />
+    </Routes>
+  )
+};
 
 export default App;
