@@ -7,6 +7,7 @@ import Test1_1 from './componenets/Test1_1';
 import Test2 from './componenets/Test2';
 import Test3 from './componenets/Test3';
 import Test4 from './componenets/Test4';
+import Test5 from './componenets/Test5';
 import  Project  from './componenets/Project';
 import Article from './componenets/Article';
 import Articles from './componenets/Articles';
@@ -23,6 +24,7 @@ const App = () => {
       <Route path="/test2" element={<Test2 />} />
       <Route path="/test3" element={<Test3 />} />
       <Route path="/test4" element={<Test4 />} />
+      <Route path="/test5" element={<Test5 />} />
       <Route path="/project/:username" element={<Project />} />
       {/* </Route> */}
       <Route path='articles' element={<Articles />} >

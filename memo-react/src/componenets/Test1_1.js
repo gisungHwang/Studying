@@ -18,6 +18,7 @@ const Test1_1 = () => {
                 <Link to ="/test2">08.03 (MySQL)</Link><br/>
                 <Link to = "/Project/velopert">08.04 (MySQL)</Link><br/>
                 <Link to = "/test4">08.05 (MySQL)</Link><br/>
+                <Link to = "/test5">09.06 (Python)</Link><br/>
                 {/* <Link to = "/Project/velopert">복습</Link><br/> */}<br/>
                 {/* <Link to = "/Project/gisung">버튼3</Link><br/><br/>
                 <Link to = "articles">게시글 목록</Link><br/> */}
