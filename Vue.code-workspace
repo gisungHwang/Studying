@@ -1,0 +1,21 @@
+{
+  "folders": [
+	{
+		"name": "Studying",
+		"path": "."
+	},
+	{
+		"name": "First_Team_Project",
+		"path": "../First_Team_Project"
+	},
+	{
+		"path": "../react-board_mysql"
+	},
+	{
+		"path": "../Miniproject"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Studying"
+  }
+}
