@@ -1,0 +1,7 @@
+﻿  ConsoleApplication10.cpp
+c:\users\hcc\source\repos\consoleapplication10\consoleapplication10\node.h(56): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\hcc\source\repos\consoleapplication10\consoleapplication10\node.h(71): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\hcc\source\repos\consoleapplication10\consoleapplication10\node.h(68): warning C4390: ';': 제어된 빈 문이 있습니다. 이 문이 필요합니까?
+c:\users\hcc\source\repos\consoleapplication10\consoleapplication10\node.h(96): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\hcc\source\repos\consoleapplication10\consoleapplication10\node.h(108): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  ConsoleApplication10.vcxproj -> C:\Users\hcc\source\repos\ConsoleApplication10\Debug\ConsoleApplication10.exe
