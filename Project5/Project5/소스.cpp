@@ -27,8 +27,8 @@ void del_order(Order**, int&);
 
 int main()
 {
-	Menu menu[6] = { { 1,"±×¸°»ø·¯µå",18000 },{ 2,"Ä¡Å²»ø·¯µå",19000 },{ 3,"Âı½ºÅ×ÀÌÅ©",32000 },
-	{ 4,"Æ¼º»½ºÅ×ÀÌÅ©",30000 },{ 5,"Ä¡ÁîÆÄ½ºÅ¸",17000 },{ 6,"Ä¡ÁîÇÇÀÚ",15000 } };
+	Menu menu[6] = { { 1,"ê·¸ë¦°ìƒëŸ¬ë“œ",18000 },{ 2,"ì¹˜í‚¨ìƒëŸ¬ë“œ",19000 },{ 3,"ì°¹ìŠ¤í…Œì´í¬",32000 },
+	{ 4,"í‹°ë³¸ìŠ¤í…Œì´í¬",30000 },{ 5,"ì¹˜ì¦ˆíŒŒìŠ¤íƒ€",17000 },{ 6,"ì¹˜ì¦ˆí”¼ì",15000 } };
 	Order *order[10] = { NULL };
 
 	int selectMenu = 0;
@@ -48,33 +48,33 @@ int main()
 		case 3: check_order(order, cnt); break;
 		case 4: del_order(order, cnt); break;
 		case 0: selectMenu = -1;
-		default: cout << "ºñÁ¤»óÀûÀÎ ÀÔ·ÂÀÔ´Ï´Ù." << endl; break;
+		default: cout << "ë¹„ì •ìƒì ì¸ ì…ë ¥ì…ë‹ˆë‹¤." << endl; break;
 		}
 	}
 }
 
-void new_order(Menu* m, Order **ptr_array_order, int& pos)				// ÁÖ¹® ÀÔ·Â
+void new_order(Menu* m, Order **ptr_array_order, int& pos)				// ì£¼ë¬¸ ì…ë ¥
 {
 	Order *o = new Order;
 	bool search = false;
-	cout << "*ÁÖ¹®¹ŞÀ» Å×ÀÌºí¹øÈ£(1-10) ¼±ÅÃ : "; cin >> o->table_num;
+	cout << "*ì£¼ë¬¸ë°›ì„ í…Œì´ë¸”ë²ˆí˜¸(1-10) ì„ íƒ : "; cin >> o->table_num;
 
-	//¿À·ù Ã¼Å©
+	//ì˜¤ë¥˜ ì²´í¬
 	if (o->table_num <= MIN_TABLE || o->table_num > MAX_TABLE)
 	{
-		cout << "Å×ÀÌºí ¹øÈ£ ÀÔ·Â¿À·ùÀÔ´Ï´Ù. Ã³À½È­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù." << endl;
+		cout << "í…Œì´ë¸” ë²ˆí˜¸ ì…ë ¥ì˜¤ë¥˜ì…ë‹ˆë‹¤. ì²˜ìŒí™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤." << endl;
 		delete(o); 
 		return;
 	}
 
-	cout << " ÁÖ¹®ÇÒ À½½Ä ¼ö ÀÔ·Â : "; cin >> o->order_count;
+	cout << " ì£¼ë¬¸í•  ìŒì‹ ìˆ˜ ì…ë ¥ : "; cin >> o->order_count;
 
 	o->food = new Menu[o->order_count];
 	o->food_quantity = new int[o->order_count];
 
 	for (int i = 0; i < o->order_count; i++)
 	{
-		cout << "ÁÖ¹® " << (i + 1) << " À» ÀÔ·ÂÇÏ¼¼¿ä : ";
+		cout << "ì£¼ë¬¸ " << (i + 1) << " ì„ ì…ë ¥í•˜ì„¸ìš” : ";
 		string name; cin >> name;
 
 		for (int j = 0; j < 6; j++)
@@ -86,13 +86,13 @@ void new_order(Menu* m, Order **ptr_array_order, int& pos)				// ÁÖ¹® ÀÔ·Â
 				break;
 			}
 		}
-		if (search == false)					//ÁÖ¹® Ã¼Å©
+		if (search == false)					//ì£¼ë¬¸ ì²´í¬
 		{
-			cout << "ÇØ´çÇÏ´Â ÁÖ¹®Àº ¾ø½À´Ï´Ù. Ã³À½È­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù." << endl;
+			cout << "í•´ë‹¹í•˜ëŠ” ì£¼ë¬¸ì€ ì—†ìŠµë‹ˆë‹¤. ì²˜ìŒí™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤." << endl;
 			break;
 		}
 
-		cout << "¼ö·®À» ÀÔ·ÂÇÏ¼¼¿ä" << (i + 1) << " : ";
+		cout << "ìˆ˜ëŸ‰"<< (i + 1)<<"ì„ ì…ë ¥í•˜ì„¸ìš” : ";
 		cin >> o->food_quantity[i];
 
 		o->total_price += o->food[i].price * o->food_quantity[i];
@@ -104,18 +104,18 @@ void new_order(Menu* m, Order **ptr_array_order, int& pos)				// ÁÖ¹® ÀÔ·Â
 	}
 	*(ptr_array_order + pos++) = o;		
 
-	cout << "ÁÖ¹®ÀÌ µî·ÏµÇ¾ú½À´Ï´Ù." << endl << endl;
+	cout << "ì£¼ë¬¸ì´ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤." << endl << endl;
 	search = false;
 }
 
-void find_order(Order **ptr_array_order, int pos)				//ÁÖ¹® °Ë»ö
+void find_order(Order **ptr_array_order, int pos)				//ì£¼ë¬¸ ê²€ìƒ‰
 {
 	int table_num = 0;
-	cout << "°Ë»öÇÒ Å×ÀÌºí¹øÈ£(1-10) ¼±ÅÃ : "; cin >> table_num;
+	cout << "ê²€ìƒ‰í•  í…Œì´ë¸”ë²ˆí˜¸(1-10) ì„ íƒ : "; cin >> table_num;
 
 	if (table_num <= MIN_TABLE || table_num > MAX_TABLE)
 	{
-		cout << "Å×ÀÌºí ¹øÈ£ ÀÔ·Â¿À·ùÀÔ´Ï´Ù. Ã³À½È­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù." << endl;
+		cout << "í…Œì´ë¸” ë²ˆí˜¸ ì…ë ¥ì˜¤ë¥˜ì…ë‹ˆë‹¤. ì²˜ìŒí™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤." << endl;
 		return;
 	}
 
@@ -131,42 +131,42 @@ void find_order(Order **ptr_array_order, int pos)				//ÁÖ¹® °Ë»ö
 					ptr_array_order[i]->food[j].price * ptr_array_order[i]->food_quantity[j] << endl;
 			}
 
-			cout << "ÁÖ¹®±İ¾× = " << ptr_array_order[i]->total_price << endl;
+			cout << "ì£¼ë¬¸ê¸ˆì•¡ = " << ptr_array_order[i]->total_price << endl;
 			int vat = ptr_array_order[i]->total_price * 0.1;
-			cout << "ºÎ°¡¼¼ = " << vat << endl;
-			cout << "°áÁ¦¿¹Á¤±İ¾× = " << ptr_array_order[i]->total_price + vat << endl;
+			cout << "ë¶€ê°€ì„¸ = " << vat << endl;
+			cout << "ê²°ì œì˜ˆì •ê¸ˆì•¡ = " << ptr_array_order[i]->total_price + vat << endl;
 		}
 	}
 }
 
-void check_order(Order** ptr_array_order, int pos)			//ÁÖ¹® °áÁ¦
+void check_order(Order** ptr_array_order, int pos)			//ì£¼ë¬¸ ê²°ì œ
 {
 	int table_num = 0;
 	int received_money = 0;
 
-	cout << "*°áÁ¦ÇÒ Å×ÀÌºí¹øÈ£(1-10) ¼±ÅÃ : "; cin >> table_num;
+	cout << "*ê²°ì œí•  í…Œì´ë¸”ë²ˆí˜¸(1-10) ì„ íƒ : "; cin >> table_num;
 
 	if (table_num <= MIN_TABLE || table_num > MAX_TABLE)
 	{
-		cout << "Å×ÀÌºí ¹øÈ£ ÀÔ·Â¿À·ùÀÔ´Ï´Ù. Ã³À½È­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù." << endl;
+		cout << "í…Œì´ë¸” ë²ˆí˜¸ ì…ë ¥ì˜¤ë¥˜ì…ë‹ˆë‹¤. ì²˜ìŒí™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤." << endl;
 		return;
 	}
-	cout << "¹ŞÀº ±İ¾× ÀÔ·Â : "; cin >> received_money;
+	cout << "ë°›ì€ ê¸ˆì•¡ ì…ë ¥ : "; cin >> received_money;
 
 	for (int i = 0; i < pos; i++)
 	{
 		if (table_num == ptr_array_order[i]->table_num)
 		{
-			if (received_money >= ptr_array_order[i]->total_price + ptr_array_order[i]->total_price*0.1)		//¹ŞÀº ±İ¾× Ã¼Å©
+			if (received_money >= ptr_array_order[i]->total_price + ptr_array_order[i]->total_price*0.1)		//ë°›ì€ ê¸ˆì•¡ ì²´í¬
 			{
-				cout << "¹İÈ¯ ±İ¾× = " << received_money - ((ptr_array_order[i]->total_price) + (ptr_array_order[i]->total_price*0.1)) << endl;
+				cout << "ë°˜í™˜ ê¸ˆì•¡ = " << received_money - ((ptr_array_order[i]->total_price) + (ptr_array_order[i]->total_price*0.1)) << endl;
 				ptr_array_order[i]->isChecked = true;
-				cout << "°áÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù." << endl;
+				cout << "ê²°ì œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤." << endl;
 				break;
 			}
 			else
 			{
-				cout << "°áÁ¦ ±İ¾×ÀÌ ºÎÁ·ÇÕ´Ï´Ù. ´Ù½Ã °áÁ¦ÇØÁÖ¼¼¿ä." << endl;
+				cout << "ê²°ì œ ê¸ˆì•¡ì´ ë¶€ì¡±í•©ë‹ˆë‹¤. ë‹¤ì‹œ ê²°ì œí•´ì£¼ì„¸ìš”." << endl;
 				break; 
 				return;
 			}
@@ -174,14 +174,14 @@ void check_order(Order** ptr_array_order, int pos)			//ÁÖ¹® °áÁ¦
 	}
 }
 
-void del_order(Order** ptr_array_order, int& pos)			//ÁÖ¹® »èÁ¦
+void del_order(Order** ptr_array_order, int& pos)			//ì£¼ë¬¸ ì‚­ì œ
 {
 	int table_num = 0;
-	cout << "»èÁ¦ÇÒ Å×ÀÌºí¹øÈ£(1-10) ¼±ÅÃ : "; cin >> table_num;
+	cout << "ì‚­ì œí•  í…Œì´ë¸”ë²ˆí˜¸(1-10) ì„ íƒ : "; cin >> table_num;
 
 	if (table_num <= MIN_TABLE || table_num > MAX_TABLE)
 	{
-		cout << "Å×ÀÌºí ¹øÈ£ ÀÔ·Â¿À·ùÀÔ´Ï´Ù. Ã³À½È­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù." << endl;
+		cout << "í…Œì´ë¸” ë²ˆí˜¸ ì…ë ¥ì˜¤ë¥˜ì…ë‹ˆë‹¤. ì²˜ìŒí™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤." << endl;
 		return;
 	}
 
@@ -189,16 +189,16 @@ void del_order(Order** ptr_array_order, int& pos)			//ÁÖ¹® »èÁ¦
 	{
 		if (ptr_array_order[i]->table_num == table_num)
 		{
-			if (ptr_array_order[i]->isChecked == false)			//°áÁ¦ Ã¼Å©
+			if (ptr_array_order[i]->isChecked == false)			//ê²°ì œ ì²´í¬
 			{
 				delete(ptr_array_order[i]);
 				pos -= 1;
-				cout << "»èÁ¦¸¦ ¿Ï·áÇÏ¿´½À´Ï´Ù." << endl;
+				cout << "ì‚­ì œë¥¼ ì™„ë£Œí•˜ì˜€ìŠµë‹ˆë‹¤." << endl;
 				break;
 			}
 			else
 			{
-				cout << "°áÁ¦¿Ï·áÇÑ ÁÖ¹®Àº »èÁ¦ÇÒ ¼ö ¾ø½À´Ï´Ù." << endl;
+				cout << "ê²°ì œì™„ë£Œí•œ ì£¼ë¬¸ì€ ì‚­ì œí•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤." << endl;
 				break;
 			}
 		}
@@ -207,11 +207,11 @@ void del_order(Order** ptr_array_order, int& pos)			//ÁÖ¹® »èÁ¦
 
 void print_order()
 {
-	cout << "**** ÇØÇÇ ÆĞ¹Ğ¸® ·¹½ºÅä¶û ****" << endl;
-	cout << "\t1.ÁÖ¹®ÀÔ·Â" << endl;
-	cout << "\t2.ÁÖ¹®°Ë»ö" << endl;
-	cout << "\t3.ÁÖ¹®°áÁ¦" << endl;
-	cout << "\t4.ÁÖ¹®»èÁ¦" << endl;
-	cout << "\t0.Á¾·á" << endl;
+	cout << "**** í•´í”¼ íŒ¨ë°€ë¦¬ ë ˆìŠ¤í† ë‘ ****" << endl;
+	cout << "\t1.ì£¼ë¬¸ì…ë ¥" << endl;
+	cout << "\t2.ì£¼ë¬¸ê²€ìƒ‰" << endl;
+	cout << "\t3.ì£¼ë¬¸ê²°ì œ" << endl;
+	cout << "\t4.ì£¼ë¬¸ì‚­ì œ" << endl;
+	cout << "\t0.ì¢…ë£Œ" << endl;
 	cout << "******************************" << endl;
 }
