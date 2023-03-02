@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.33026.149
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hServerWin", "hServerWin\hServerWin.vcxproj", "{ABA33C25-6F83-4720-ADEC-58D1E78B0A5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABA33C25-6F83-4720-ADEC-58D1E78B0A5A}.Debug|x64.ActiveCfg = Debug|x64
+		{ABA33C25-6F83-4720-ADEC-58D1E78B0A5A}.Debug|x64.Build.0 = Debug|x64
+		{ABA33C25-6F83-4720-ADEC-58D1E78B0A5A}.Debug|x86.ActiveCfg = Debug|Win32
+		{ABA33C25-6F83-4720-ADEC-58D1E78B0A5A}.Debug|x86.Build.0 = Debug|Win32
+		{ABA33C25-6F83-4720-ADEC-58D1E78B0A5A}.Release|x64.ActiveCfg = Release|x64
+		{ABA33C25-6F83-4720-ADEC-58D1E78B0A5A}.Release|x64.Build.0 = Release|x64
+		{ABA33C25-6F83-4720-ADEC-58D1E78B0A5A}.Release|x86.ActiveCfg = Release|Win32
+		{ABA33C25-6F83-4720-ADEC-58D1E78B0A5A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D164BC14-85BF-446A-9093-74DC542D3BD2}
+	EndGlobalSection
+EndGlobal
