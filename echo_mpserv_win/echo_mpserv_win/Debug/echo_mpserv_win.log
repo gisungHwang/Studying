@@ -1,0 +1,4 @@
+﻿  echo_mpserv_win.c
+c:\users\rltjd\source\repos\echo_mpserv_win\echo_mpserv_win\echo_mpserv_win.c(19): warning C4101: 'buf' :참조되지 않은 지역 변수입니다.
+c:\users\rltjd\source\repos\echo_mpserv_win\echo_mpserv_win\echo_mpserv_win.c(18): warning C4101: 'strLen' :참조되지 않은 지역 변수입니다.
+  echo_mpserv_win.vcxproj -> C:\Users\rltjd\source\repos\echo_mpserv_win\Debug\echo_mpserv_win.exe

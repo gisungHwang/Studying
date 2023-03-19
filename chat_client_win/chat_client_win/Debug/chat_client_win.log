@@ -1,0 +1,8 @@
+﻿  chat_client_win.c
+c:\users\rltjd\source\repos\chat_client_win\chat_client_win\chat_client_win.c(49): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'FILE *'입니다.
+c:\users\rltjd\source\repos\chat_client_win\chat_client_win\chat_client_win.c(50): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'FILE *'입니다.
+c:\users\rltjd\source\repos\chat_client_win\chat_client_win\chat_client_win.c(34): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1831): note: 'inet_addr' 선언을 참조하십시오.
+c:\users\rltjd\source\repos\chat_client_win\chat_client_win\chat_client_win.c(15): warning C4101: 'strLen' :참조되지 않은 지역 변수입니다.
+c:\users\rltjd\source\repos\chat_client_win\chat_client_win\chat_client_win.c(68): warning C4028: 정식 매개 변수 1이(가) 선언과 다릅니다.
+  chat_client_win.vcxproj -> C:\Users\rltjd\source\repos\chat_client_win\Debug\chat_client_win.exe
