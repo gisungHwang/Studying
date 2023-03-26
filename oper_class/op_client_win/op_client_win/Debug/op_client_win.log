@@ -1,0 +1,14 @@
+﻿  op_client_win.c
+c:\users\rltjd\source\repos\op_client_win\op_client_win\op_client_win.c(18): warning C4101: 'wsaData' :참조되지 않은 지역 변수입니다.
+c:\users\rltjd\source\repos\op_client_win\op_client_win\op_client_win.c(20): warning C4101: 'servAdr' :참조되지 않은 지역 변수입니다.
+c:\users\rltjd\source\repos\op_client_win\op_client_win\op_client_win.c(48): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winsock2.h(1831): note: 'inet_addr' 선언을 참조하십시오.
+c:\users\rltjd\source\repos\op_client_win\op_client_win\op_client_win.c(77): warning C4133: '함수': 'int *'과(와) 'char *' 사이의 형식이 호환되지 않습니다.
+c:\users\rltjd\source\repos\op_client_win\op_client_win\op_client_win.c(64): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 'scanf' 선언을 참조하십시오.
+c:\users\rltjd\source\repos\op_client_win\op_client_win\op_client_win.c(71): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 'scanf' 선언을 참조하십시오.
+c:\users\rltjd\source\repos\op_client_win\op_client_win\op_client_win.c(75): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 'scanf' 선언을 참조하십시오.
+c:\users\rltjd\source\repos\op_client_win\op_client_win\op_client_win.c(83): warning C4028: 정식 매개 변수 1이(가) 선언과 다릅니다.
+  op_client_win.vcxproj -> C:\Users\rltjd\source\repos\op_client_win\Debug\op_client_win.exe
