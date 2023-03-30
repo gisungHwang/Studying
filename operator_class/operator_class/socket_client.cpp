@@ -34,7 +34,7 @@ void socket_client::InitSocket(char *argv[]) {
 
 void socket_client::ConnectSocket() {
 
-	fputs("Operand count: ", stdout);
+		fputs("Operand count: ", stdout);
 	cin >> opndCnt;
 
 	opmsg[0] = (char)opndCnt;
@@ -42,15 +42,16 @@ void socket_client::ConnectSocket() {
 	for (i = 0; i < opndCnt; i++)
 	{
 		printf("Operand %d: ", i + 1);
-		cin >> opmsg[i*OPSZ + 1];
+		scanf("%d", (int*)&opmsg[i*OPSZ + 1]);
 	}
 	fgetc(stdin);
 	fputs("Operator: ", stdout);
 	cin >> opmsg[opndCnt*OPSZ + 1];
 	send(hSocket, opmsg, opndCnt*OPSZ + 2, 0);
-	recv(hSocket, (char*)result, RLT_SIZE, 0);
+	recv(hSocket, (char*)&result, RLT_SIZE, 0);
 
-	cout << "Operation result: " << (int)result << "\n";
+	//printf("Operation result : %d", result);
+	cout << "Operation result: " << result << "\n";
 }
 
 void socket_client::ErrorHandling(string message)
